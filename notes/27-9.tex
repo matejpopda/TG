@@ -1,0 +1,83 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}}
+\begin{document}
+
+\begin{definition}
+
+
+    Neorientovaný prostý graf $\mathbb{G} = (\mathbb{V}, \mathbb{E})$ \\
+    $\mathbb{V}$ konečná množina vrcholů \\
+    $\mathbb{E} \subseteqq \binom{V}{2}$ \\
+    $\mathbb{E} $ množina hran\\
+    $\binom{V}{2}$  množina všech neuspořádaných dvojic z $\mathbb{V}$ \\
+
+
+    Často $|\mathbb{V}|=n$,\\
+    často $\mathbb{V} = [n]$, kde $[n] = \{1,2,...,n\}$ 
+\end{definition}
+
+
+\begin{definition}
+    Nechť $\mathbb{G} = (\mathbb{V}, \mathbb{E})$, pak definujeme \\
+    $\mathbb{E}(\mathbb{G}) = \mathbb{E}$\\
+    $\mathbb{V}(\mathbb{G}) = \mathbb{V}$
+\end{definition}
+
+\begin{definition}
+    Pro graf $\mathbb{G} = (\mathbb{V}, \mathbb{E})$ definujme  doplněk $\mathbb{G} \coloneq \bar{\mathbb{G}}$ je graf $(V, \binom{V}{2}\setminus E )$
+\end{definition}
+
+\begin{definition}
+    Nulový graf $G = (\emptyset, \emptyset)$ 
+\end{definition}
+
+\begin{example}
+    Kolik je různých grafů na $[n]$?
+
+    Možná Obrázek
+
+    Poté co se zamyslíme tak vidíme, že jich je obecně $2^{\binom{n}{2}}$
+\end{example}
+
+
+
+\begin{definition}
+    $\mathbb{G} = (\mathbb{V}, \mathbb{E})$ a $\mathbb{H} = (\mathbb{W}, \mathbb{F})$ jsou isomorfní, jestliže existuje bijekce 
+    $f: V \mapsto W, (|V| = |W|)$ tak, že $\forall u,v \in V: \{u, v\}\in E \Leftrightarrow \{ f(u), f(v) \} \in F$
+\end{definition}
+
+
+\begin{definition}
+    $f$ je automorfismus jestliže jde o isomorfismus mezi $G$ a $G$ 
+\end{definition}
+
+\begin{remark}
+    $Aut(G) = \{f | f\text{ je automorfismus }G\}$ je grupa
+\end{remark}
+
+
+\begin{example}
+    Kolik je navzájem neisomorfních grafů s n vrcholy?
+
+    Obrázek 
+
+    Není vzorec, musí se počítat, existují horní a dolní odhady.
+\end{example}
+
+\begin{claim}
+Dolní odhad počtu navzájem neisomorfních grafů s n vrcholy je alespoň
+\begin{equation}
+    \frac{2^{\binom{n}{2}}}{n!} \geq \frac{2^{\binom{n}{2}}}{n^n} \approx \frac{2^{\frac{n^2}{2}}}{2^{n \log(n)}} \approx 2^{(\frac{1}{2} - \varepsilon)n^2} 
+\end{equation}
+\end{claim}
+
+\begin{proof}
+    Označme $g_n$ jako množinu všech neisomorfních grafů na [n]
+    \begin{equation*}
+        2^{\binom{n}{2}} = \sum_{g_n} \frac{n!}{|Aut(G)|} \leq n! |g_n|
+    \end{equation*}
+    \qed
+\end{proof}
+
+
+\end{document}
