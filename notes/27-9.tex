@@ -34,7 +34,11 @@
 \begin{example}
     Kolik je různých grafů na $[n]$?
 
-    Možná Obrázek
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=\textwidth/2]{images/27-9-pocetgrafu.png}
+        \caption*{Na obrázku vidíme různý počet grafů}
+    \end{figure} 
 
     Poté co se zamyslíme tak vidíme, že jich je obecně $2^{\binom{n}{2}}$
 \end{example}
@@ -59,7 +63,11 @@
 \begin{example}
     Kolik je navzájem neisomorfních grafů s n vrcholy?
 
-    Obrázek 
+    \begin{figure}[h]
+        \centering        
+        \includegraphics[width=\textwidth/2]{images/27-9-pocetgrafu.png}
+        \caption*{Každá "kategorie" grafů je jeden isomorfismus}
+    \end{figure} 
 
     Není vzorec, musí se počítat, existují horní a dolní odhady.
 \end{example}
@@ -79,5 +87,69 @@ Dolní odhad počtu navzájem neisomorfních grafů s n vrcholy je alespoň
     \qed
 \end{proof}
 
+\begin{claim}
+    (Bez důkazu)
+
+    $\forall\varepsilon>0 \exists n_0 \forall n\geq n_0$
+
+    $|g_n|\leq (1+\varepsilon) \frac{2^{\binom{n}{2}}}{n!}$
+\end{claim}
+
+
+\begin{definition}
+    Pro graf $\mathbb{G} = (\mathbb{V}, \mathbb{E})$ a vrchol $v\in V$ Označme
+
+    $N_G (v) \coloneq \left\{ x\in V: \{x, v\} \in E \right\}$, prvkům říkáme sousedé $v$ 
+
+    $|N_G (v)| = deg_G(v)$, stupeň
+\end{definition}
+
+
+\begin{claim}
+    $\sum_{v\in V} deg (v)$ je sudé číslo
+\end{claim}
+\begin{proof}
+    $\sum_{v\in V} deg (v) = 2|E|$ \qed
+\end{proof}
+
+\begin{definition}
+    $\mathbb{G} = (\mathbb{V}, \mathbb{E})$ graf, $v\in V, e\in E$: $v$ je incidentní s $e$, jestliže $s\in e$
+
+    $e\in E, f\in E$, $e$ je incidentní s $f$ jestliže $|e\cap f| = 1$
+\end{definition}
+
+
+\begin{definition}
+    Sled v grafu G
+
+    Alternující posloupnost vrcholů a hran, např $v_0, e_1, v_1, e_2, v_2 ......... e_k v_k$ 
+\end{definition}
+
+\begin{definition}
+    tah v grafu G, sled $\forall i\neq j \implies e_i \neq e_j$
+\end{definition}
+
+\begin{definition}
+    cesta v G, sled $\forall i\neq j \implies v_i \neq v_j$
+
+\end{definition}
+
+
+
+\begin{definition}
+    sled v G je z $u$ do $w$ jestliže $\exists$ sled, $u = v_0 e_1 .... e_k v_k = w$
+
+    Cesta v G je z $u$ do $w$ jestliže $\exists$ sled z $u$ do $w$ tak že se žádný vrchol nevyskytuje dvakrát.
+\end{definition}
+
+
+\begin{claim}
+    Buď $G=(V,E)$ graf a $u,w\in V$ jeho dva vrcholy. Následující dvě tvrzení jsou potom ekvivalentní.
+
+    \begin{enumerate}
+        \item Existuje sled v $G$ z vrcholu $u$ do $w$
+        \item Existuje cesta v $G$ z vrcholu $u$ do $w$
+    \end{enumerate}
+\end{claim}
 
 \end{document}
