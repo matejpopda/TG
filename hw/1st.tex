@@ -8,8 +8,18 @@
 \subsection*{1)}
 \subsubsection*{Zadání}
 Graf nazvěme \textit{asymetrickým} obsahuje-li jeho grupa automorfismů pouze identitu.
-Zkonstruujte nekonečně mnoho navzájem neisomorfních aysmetrických grafů.
+Zkonstruujte nekonečně mnoho navzájem neisomorfních asymetrických grafů.
 \subsubsection*{Řešení}
+Jako naši množinu neisomorfních asymetrických grafů vezměme\\ množinu $\mathcal{G} = \{G_7, G_8, ...\}$.\\
+$G_n$ definujeme jako
+\begin{equation*}
+    G_n = ([n], \{\{ 1,2 \}, \{ 1,3\}, \{ 3,4 \}, \{ 1,5 \}, \{ 5,6 \}, \{ 6,7 \}, ..., \{ n-1, n \} \} )
+\end{equation*}
+
+Protože se jedná a grafy s různým počtem vrcholů neexistuje mezi nimi isomorfní zobrazení. 
+
+Dokažme, že se jedná o asymetrické grafy. \todo{here}
+
 
 
 \subsection*{2)}
@@ -63,6 +73,48 @@ Tímto jsme ukázali, že $\leadsto$ je ekvivalence.
 Dokažte, že každý graf $G$ s alespoň dvěma vrcholy obsahuje dvojici různých vrcholů se stejným stupňem. Jinými slovy, $\exists u,w \in V(G)$
 tak, že $u\neq w$ a $deg_G(u) = deg_G(w)$.
 \subsubsection*{Řešení}
+
+Ukážeme sporem. \\Předpokládáme, že existuje graf $G = (V,E)$ ve kterém neexistuje dvojice různých vrcholů se stejným stupňem.\\
+Jako $V$ vezměme $[n]$\\
+Budeme využívat vztah 
+\begin{equation}\label{hw1-3-handshake}
+    \sum_{v\in V} deg_G (v) = 2|E|
+\end{equation}
+
+% Protože vrcholy mají různé stupně tak můžeme levou stranu omezit zdola jako sumu $\sum_{j=0}^{n-1} j$. Z toho plyne, že
+% \begin{equation*}
+%     \frac{(n-1)n}{2} \leq 2|E| = 2 \binom{n}{2} = 2 \frac{n!}{2! (n-2)!} = n(n-1)
+% \end{equation*}
+% Nalezněme pro které $n$ tato nerovnost neplatí.
+% \begin{align*}
+%     (n-1)n &\leq 2 n(n-1)\\
+%     1 &\leq 2 
+% \end{align*} 
+
+Odhadněme levou stranu zhora, jako $\sum_{v\in V} |V|$, tj. každý je soused s každým.\\
+Tento odhad ještě upravme tak, abychom využili předpokladu, že neexistuje dvojice vrcholů se stejným stupněm.\\
+\begin{equation*}
+    \sum_{v\in V} |V| \geq \sum_{v\in V} |V| - v =  \sum_{j=0}^{n-1} n - j = n^2 - \frac{(n-1)n}{2} = \frac{n(n+1)}{2}
+\end{equation*}
+
+Pravou stranu \eqref{hw1-3-handshake} můžeme přepsat jako 
+\begin{equation*}
+    2|E| = 2 \binom{n}{2} = 2 \frac{n!}{2! (n-2)!} = n(n-1)
+\end{equation*}
+
+Tu stejnou sumu omezme zdola jako
+\begin{equation*}
+    \frac{(n-1)n}{2}
+\end{equation*}
+
+Nakonec tedy dostáváme 
+\begin{equation*}
+    \frac{n(n+1)}{2} \geq 2|E| \geq \frac{(n-1)n}{2}
+\end{equation*}
+\begin{equation*}
+    n+1 \geq (n-1)
+\end{equation*}
+\todo{dodelat}
 
 
 \subsection*{3b)}
