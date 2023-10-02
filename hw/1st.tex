@@ -6,34 +6,84 @@
 \section*{1. domácí úlohy}
 
 \subsection*{1)}
+\subsubsection*{Zadání}
 Graf nazvěme \textit{asymetrickým} obsahuje-li jeho grupa automorfismů pouze identitu.
 Zkonstruujte nekonečně mnoho navzájem neisomorfních aysmetrických grafů.
+\subsubsection*{Řešení}
+
 
 \subsection*{2)}
+\subsubsection*{Zadání}
 Pro daný graf $G=(V,E)$, uvažujme následující relaci $\leadsto$ na $V$: pro dva (ne nutně různé) vrcholy $u,v\in V$ řekneme, že 
 $u$ je v relaci s $w$, tzn. $u\leadsto w$, jestliže existuje cesta v $G$ z $u$ do $w$. Dokažte, že $\leadsto$ je ekvivalence na $V$
+\subsubsection*{Řešení}
+Aby relace byla ekvivalencí, musí být reflexivní, symetrická a tranzitivní.
 
+Předpokládáme tedy graf $G=(V,E)$, $v_i\in V$, $e_j\in E$, kde $i,j \in [n+k]$.
+
+Dokažme reflexivitu, tj. $\forall u\in V: u\leadsto u$.\\
+Toto tvrzení platí triviálně, jako cestu volíme jednočlennou posloupnost $(u)$.
+
+Dokažme symetrii, tj. $\forall u,w\in V: u\leadsto w \implies w\leadsto u$.\\
+Předpokládáme tedy existenci cesty z $u$ do $w$, tedy posloupnost 
+\begin{equation*}
+    (u, e_1, v_1, e_2, ..., v_{n-1}, e_{n-1}, w)
+\end{equation*}
+Zřejmě existuje cesta z $w$ do $u$, stačí přetočit předchozí posloupnost, tedy
+\begin{equation*}
+    (w, e_{n-1}, v_{n-1}, ..., v_1, e_1, w)
+\end{equation*}
+
+Nakonec dokažme tranzitivitu, tj. $\forall u,w,x\in V: u\leadsto w \wedge w\leadsto x \implies u\leadsto x$\\
+Existuje tedy cesta z $u$ do $w$ a cesta z $w$ do $x$, tedy
+\begin{equation*}
+    (u, e_1, v_1, e_2, ..., v_{n-1}, e_{n-1}, w)
+\end{equation*}
+\begin{equation*}
+    (w, e_{n+1}, v_{n+1}, e_{n+2}, ..., v_{n+k-1}, e_{n+k-1}, x)
+\end{equation*}
+Nejprve řešme triviální případ, kdy $\nexists a \in [n], b \in \{n+1, n+2, ..., n+k\}, v_a = v_b$ .\\
+V tomto případě existuje cesta ve tvaru
+\begin{equation*}
+    (u, e_1, v_1, e_2, ..., v_{n-1}, e_{n-1}, w, e_{n+1}, v_{n+1}, e_{n+2}, ..., v_{n+k-1}, e_{n+k-1}, x)
+\end{equation*} 
+Nakonec řešme případ kdy $\exists a \in [n], b \in \{n+1, n+2, ..., n+k\}, v_a = v_b$.\\
+Nejmenší $a$ pro které $\exists b$ tak, že rovnost $v_a = v_b$ platí označme jako $h$, korespondující $b$ (existuje pouze jedno) označme jako $g$.
+Jako cestu můžeme poté volit jako
+\begin{equation*}
+    (u, e_1, v_1, e_2, ..., v_{j-1}, e_{j-1}, v_h = v_g , e_{g+1}, v_{g+1},..., v_{n+k-1}, e_{n+k-1}, x)
+\end{equation*} 
+
+Tímto jsme ukázali, že $\leadsto$ je ekvivalence.  
+\qed
 
 
 \subsection*{3a)}
+\subsubsection*{Zadání}
 Dokažte, že každý graf $G$ s alespoň dvěma vrcholy obsahuje dvojici různých vrcholů se stejným stupňem. Jinými slovy, $\exists u,w \in V(G)$
 tak, že $u\neq w$ a $deg_G(u) = deg_G(w)$.
-
+\subsubsection*{Řešení}
 
 
 \subsection*{3b)}
+\subsubsection*{Zadání}
 Buď $\delta$ přirozené číslo. Dokažte, že každý nenulový graf, kde každý vrchol má stupeň alespoň $\delta$, obsahuje cestu s $\delta$ hranami.
+\subsubsection*{Řešení}
 
 
 \subsection*{4)}
+\subsubsection*{Zadání}
 Nazvěme graf $G$ \textit{doplňkem sebe sama} platí-li, že $G$ je isomorfní svému doplňku $\bar{G}$. 
 Zkonstruujte nekonečně mnoho navzájem neisomorfních grafů $G$ jež jsou doplňkem sebe sama.
+\subsubsection*{Řešení}
 
 
 
 \subsection*{5)}
+\subsubsection*{Zadání}
 Graf nazvěme \textit{d-regulárním}, jestliže všechny jeho vrcholy mají stupeň přesně $d$. 
 Určete všechny dvojice čísel $n$ a $d$, kde $0\leq d\leq n-1$, takové, že existuje $d$-regulární graf s $n$ vrcholy.
+\subsubsection*{Řešení}
 
 
 
