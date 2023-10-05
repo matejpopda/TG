@@ -1,0 +1,59 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}}
+\begin{document}
+
+
+
+\begin{definition}
+    $G=(V,E)$ je strom pokud
+\begin{enumerate}
+    \item Souvislý graf bez cyklů
+    \item Každé 2 vrcholy spojeny právě jednou cestou
+    \item Souvislý, každý tah je cesta
+    \item maximální $\subseteq$ vůči hranám, bez cyklů
+    \item Každá hrana je most a je souvislý
+    \item souvislý, $|E| = |V|-1$
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+    G je les pokud je G bez cyklů (chybí podmínka souvislosti)
+\end{definition}
+
+\begin{theorem}
+    Definice stromu 1-6 jsou ekvivalentní.
+\end{theorem}
+
+\begin{proof}
+    Ponecháno čtenáři. 
+\end{proof}
+
+\begin{definition}
+    Graf $G=(V,E)$, $v\in V$ je list jestliže $deg_G(v) = 1$
+\end{definition}
+
+\begin{lemma}
+    Každý strom T s $\geq 2$ vrcholy obsahuje  $\geq 2$ listy
+\end{lemma}
+
+\begin{definition}
+    $\mathcal{T}_n \coloneq $ počet stromů na $[n]$.
+\end{definition}
+
+\begin{theorem}[Caley]
+    $\mathcal{T}_n = n^{n-2}$
+\end{theorem}
+
+\begin{corollary}
+    Neizomorfních stromů na $n$ vrcholech $\geq \frac{n^{n-2}}{n!} \approx C \frac{e^n}{n} n^{n-2} \approx C \frac{e^n}{n^{\frac{5}{2}}} $
+\end{corollary}
+
+\begin{theorem}
+    (Pro zajímavost) Počet Neizomorfních stromů s n vrcholy je asymptomaticky $C\frac{\alpha^n}{n^{\frac{5}{2}}}$. $\alpha\approx2.956, C\approx0,.535$
+\end{theorem}
+
+\begin{definition}
+    $\mathcal{T}_n' = $ počet zakořeněných stromů $(T, v)$ na $[n]$ = $n \mathcal{T_n}$
+\end{definition}
+
+\end{document}

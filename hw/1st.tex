@@ -74,53 +74,41 @@ Dokažte, že každý graf $G$ s alespoň dvěma vrcholy obsahuje dvojici různ�
 tak, že $u\neq w$ a $deg_G(u) = deg_G(w)$.
 \subsubsection*{Řešení}
 
-Ukážeme sporem. \\Předpokládáme, že existuje graf $G = (V,E)$ ve kterém neexistuje dvojice různých vrcholů se stejným stupňem.\\
-Jako $V$ vezměme $[n]$\\
-Budeme využívat vztah 
-\begin{equation}\label{hw1-3-handshake}
-    \sum_{v\in V} deg_G (v) = 2|E|
-\end{equation}
+Ukážeme sporem. \\
+Jako $V$ vezměme $[n]$.\\
+Předpokládáme, že existuje graf $G = (V,E)$ ve kterém neexistuje dvojice různých vrcholů se stejným stupňem.
 
-% Protože vrcholy mají různé stupně tak můžeme levou stranu omezit zdola jako sumu $\sum_{j=0}^{n-1} j$. Z toho plyne, že
-% \begin{equation*}
-%     \frac{(n-1)n}{2} \leq 2|E| = 2 \binom{n}{2} = 2 \frac{n!}{2! (n-2)!} = n(n-1)
-% \end{equation*}
-% Nalezněme pro které $n$ tato nerovnost neplatí.
-% \begin{align*}
-%     (n-1)n &\leq 2 n(n-1)\\
-%     1 &\leq 2 
-% \end{align*} 
+Proto tedy můžeme vrcholy označit tak, že $deg_G(v_0) = 0, deg_G(v_1) = 1, ..., deg_G(v_n)=n$.\\
+Ale toto je spor, protože vrchol $v_0$ nemá být spojen s žádným dalším vrcholem ale, vrchol $v_n$ má být spojen se všemi vrcholy.
 
-Odhadněme levou stranu zhora, jako $\sum_{v\in V} |V|$, tj. každý je soused s každým.\\
-Tento odhad ještě upravme tak, abychom využili předpokladu, že neexistuje dvojice vrcholů se stejným stupněm.\\
-\begin{equation*}
-    \sum_{v\in V} |V| \geq \sum_{v\in V} |V| - v =  \sum_{j=0}^{n-1} n - j = n^2 - \frac{(n-1)n}{2} = \frac{n(n+1)}{2}
-\end{equation*}
-
-Pravou stranu \eqref{hw1-3-handshake} můžeme přepsat jako 
-\begin{equation*}
-    2|E| = 2 \binom{n}{2} = 2 \frac{n!}{2! (n-2)!} = n(n-1)
-\end{equation*}
-
-Tu stejnou sumu omezme zdola jako
-\begin{equation*}
-    \frac{(n-1)n}{2}
-\end{equation*}
-
-Nakonec tedy dostáváme 
-\begin{equation*}
-    \frac{n(n+1)}{2} \geq 2|E| \geq \frac{(n-1)n}{2}
-\end{equation*}
-\begin{equation*}
-    n+1 \geq (n-1)
-\end{equation*}
-\todo{dodelat}
+Tím jsme ukázali, že každý graf obsahuje dvojici různých vrcholů se stejným stupněm. 
 
 
 \subsection*{3b)}
 \subsubsection*{Zadání}
 Buď $\delta$ přirozené číslo. Dokažte, že každý nenulový graf, kde každý vrchol má stupeň alespoň $\delta$, obsahuje cestu s $\delta$ hranami.
 \subsubsection*{Řešení}
+
+Důkaz provedeme sestrojením cesty v obecném nenulovém grafu $G=([n], E)$, kde každý vrchol má stupeň alespoň $\delta$.
+
+
+Počátek cesty označme jako $v_0$. 
+Zvolme jednu hranu z $E$ (je jich alespoň $\delta$) které obsahují $v_0$, tu označme jako $e_1$.
+Druhý vrchol, který $e_1$ obsahuje, označme jako $v_1$.\\
+Počet hran z $E$ obsahujících $v_1$, které ještě součástí hledané cesty nejsou, je alespoň $\delta-1$.
+Jednu z nich zvolme a označme $e_2$, vrchol který v hledané cestě ještě není označme $v_2$.
+
+Tento krok opakujeme, v $k$-tém kroku máme cestu $v_0, e_1, v_1, ..., v_k$. \\
+Počet hran z $E$, které obsahují $v_k$ a neobsahují žádný z vrcholů $v_j, j\in[k-1]$ je $\delta-k$.\\
+Jednu z těchto hran zvolíme a označíme $e_{k+1}$.\\
+Vrchol který v hledané cestě ještě není označme $v_{k+1}$.\\
+
+
+Tento krok můžeme opakovat dokud $k \neq \delta$. Poté není zaručena existence hrany z $E$, 
+která by spojovala $v_\delta$ s vrcholem, který v námi konstruované cestě není.
+
+V grafu tedy existuje cesta $v_0, e_1, v_1, ...,e_\delta , v_\delta$, která zřejmě obsahuje $\delta$ hran.
+\qed
 
 
 \subsection*{4)}
