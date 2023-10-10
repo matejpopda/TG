@@ -117,6 +117,17 @@ Nazvěme graf $G$ \textit{doplňkem sebe sama} platí-li, že $G$ je isomorfní 
 Zkonstruujte nekonečně mnoho navzájem neisomorfních grafů $G$ jež jsou doplňkem sebe sama.
 \subsubsection*{Řešení}
 
+Označme $H_n$ graf s $n$ vrcholy, kde každý vrchol je propojený s každým, tedy $(n-1)$-regulární graf. 
+Jeho doplněk označme jako $\bar{H}_n$.
+
+Sestrojme následující graf
+
+
+
+
+
+Grafy $G_n$ jsou mezi sebou zřejmě neisomorfní, protože mají různý počet vrcholů.
+
 
 
 \subsection*{5)}
@@ -124,7 +135,65 @@ Zkonstruujte nekonečně mnoho navzájem neisomorfních grafů $G$ jež jsou dop
 Graf nazvěme \textit{d-regulárním}, jestliže všechny jeho vrcholy mají stupeň přesně $d$. 
 Určete všechny dvojice čísel $n$ a $d$, kde $0\leq d\leq n-1$, takové, že existuje $d$-regulární graf s $n$ vrcholy.
 \subsubsection*{Řešení}
+Předpokládejme graf s $n$ vrcholy, $\mathbb{V} = [n]$.
 
+Zaveďme následující značení pro $k>0$
+\begin{equation*}
+    E_k = \left\{ \{ 0, k\bmod n \}, \{ 1, 1 + k\bmod n \}, \{ 2, 2+k\bmod n \}, ..., \{ n - 1, k - 1\bmod n \}\right\}
+\end{equation*}
+Všimněme si, že každé číslo se objeví právě ve dvou neuspořádaných dvojící.
+
+Pro $k=0$ definujme
+\begin{equation*}
+    E_0 = \{\}
+\end{equation*}
+
+Vidíme, že triviálně platí následující tvrzení $\forall a,b <n/2 \in \mathbb{N}_0, a\neq b \implies E_a \cap E_b = \emptyset$.
+
+
+
+Nyní můžeme explicitně konstruovat $d$-regulární grafy následujícím způsobem. 
+
+$d$-regulární graf označme jako $G_d$, vezměme $2h=n-1$ pro $n$ liché, $2h=n-2$ pro $n$ sudé. 
+
+\begin{align*}
+    G_0 &= (\mathbb{V}, E_0 )\\
+    G_2 &= (\mathbb{V}, E_0 \cup E_1)\\
+    G_4 &= (\mathbb{V}, E_0 \cup E_1 \cup E_2)\\
+    G_6 &= (\mathbb{V}, E_0 \cup E_1 \cup E_2 \cup E_3)\\
+    \dots&\dots\dots\\
+    G_{2h-2} &= (\mathbb{V}, \bigcup_{i=0}^{h-1} E_i)\\
+    G_{2h} &= (\mathbb{V}, \bigcup_{i=0}^{h} E_i)
+\end{align*}
+
+
+Tímto způsobem jsme zkonstruovali všechny sudé regulární grafy pro libovolný počet vrcholů.
+
+
+Dále využijme následujícího tvrzení.
+\begin{lemma*}
+    Pokud pro $n$ vrcholů existuje $d$-regulární graf, tak pro $n$ vrcholů existuje i $(n-1-d)$-regulární graf.    
+\end{lemma*}
+\begin{proof}
+    Důkaz je triviální, stačí si uvědomit že v $d$-regulárním grafu s $n$ vrcholy, má každý vrchol $d$ hran z $n-1$ možných. \\
+    Jeho doplněk je poté $(n-1-d)$-regulární graf. 
+\end{proof}
+
+Díky tomuto lematu a předchozí konstrukci dokážeme pro každé sudé $n$ zkonstruovat všechny $d$-regulární grafy, kde platí $0\leq d\leq n-1$. 
+
+Nakonec se zabývejme zbývajícím případem, kdy $n$ a $d$ jsou lichá čísla. Vyjděme z principu sudosti a $d$-regularity hledaného grafu.
+\begin{align*}
+    \sum_{v\in V} deg_{G}(V) &= 2|E|\\
+    \sum_{v\in V} d &= 2|E|\\
+    n d &= 2|E|
+\end{align*}
+Jak vidíme tak pro $n$ a $d$ liché tato rovnost není splněna, protože na levé straně je liché a na pravé straně sudé číslo.
+A tedy neexistuje $d$-regulární graf s $n$ vrcholy, pro $n$ a $d$ lichá.
+
+Množina všech uspořádaných dvojic $(n,d)$ tak, že pro ně existuje $d$-regulární graf s $n$ vrcholy nakonec vypadá následovně.
+\begin{equation*}
+    \left\{  (n,d)\in\mathbb{N}^2 \mid  0\leq d\leq n-1 \wedge nd \text{ je sudé číslo} \right\}
+\end{equation*}
 
 
 \end{document}
