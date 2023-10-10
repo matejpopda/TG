@@ -18,7 +18,12 @@ $G_n$ definujeme jako
 
 Protože se jedná a grafy s různým počtem vrcholů neexistuje mezi nimi isomorfní zobrazení. 
 
-Dokažme, že se jedná o asymetrické grafy. \todo{here}
+Ukažme, že se jedná o asymetrické grafy.\\
+Aby zobrazení $f$ bylo automorfismus, tak musí platit $f(1) = 1$, protože se jedná o a jediný uzel stupně 3.\\
+Dále určitě musí platit $f(2) = 2$, protože to je jediný uzel stupně 1, který je zároveň spojený s uzlem stupně 3.\\
+Nakonec musí platit, že $f(3) = 3$ a $f(4) = 4$, protože uzel 4 musí sousedit s uzlem, který sousedí s uzlem stupně 3.\\
+Podobné tvrzení tedy platí i pro uzly $5, ..., n$. Tedy existuje pouze jedno zobrazení a to identita. 
+
 
 
 
@@ -120,13 +125,28 @@ Zkonstruujte nekonečně mnoho navzájem neisomorfních grafů $G$ jež jsou dop
 Označme $H_n$ graf s $n$ vrcholy, kde každý vrchol je propojený s každým, tedy $(n-1)$-regulární graf. 
 Jeho doplněk označme jako $\bar{H}_n$.
 
-Sestrojme následující graf
+Sestrojme graf jako na obrázku.
 
+\begin{center}
+    \centering
+    \includegraphics*[width=0.3\linewidth]{images/hw1-4a.png}
+\end{center}
 
+Čarou mezi dvěma grafy rozumíme to, že každý vrchol z jednoho grafu je spojený s každým vrcholem v druhém grafu. 
 
+Pokuď provedeme doplněk tohoto grafu, dostaneme graf jak je vidět na následujícím obrázku. Je zřejmé, že podgraf $H_n$ se stane svým doplňkem a že pokuď mezi dvěma podgrafy jsou všechny vrcholy spojeny, tak po provedení doplňku nebudou spojeny žádné.
 
+\begin{center}
+    \centering
+    \includegraphics*[width=0.5\linewidth]{images/hw1-4.png}
+\end{center}
 
-Grafy $G_n$ jsou mezi sebou zřejmě neisomorfní, protože mají různý počet vrcholů.
+Levý graf je tedy doplněk pravého, a tyto grafy jsou isomorfní. Graf je tedy námi hledaným doplňkem sebe sama. 
+
+Grafy pro různá $n$ jsou mezi sebou zřejmě neisomorfní, protože mají různý počet vrcholů. 
+
+Tím jsme zkonstruovali nekonečně mnoho navzájem neisomorfních grafů $G$ jež jsou doplňkem sebe sama.
+
 
 
 
