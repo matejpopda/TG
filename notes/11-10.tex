@@ -1,0 +1,77 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}}
+\begin{document}
+
+
+\section{Algoritmy na grafech}
+
+\begin{remark}
+    Souvislý $G=(V,E)$ a $T=(V,F)$ kostra $G$, pak platí
+    $\forall e \in E\setminus F: T + e$ obsahuje $!1$ cyklus $C_e^T$
+\end{remark}
+
+\begin{definition}
+    $G=(V,E)$ graf, $e\in\binom{V}{2}\setminus E, G+e$ značí graf
+    $(V, E\cup \{ e\})$
+\end{definition}
+
+\begin{definition}
+    Cyklu $C_e^T$ se říká fundamentální cyklus $e$ v $G$
+    vůči $T$.
+\end{definition}
+
+\begin{remark}
+    Souvislý $G=(V,E)$, $T=(V,F)$ kostra, $e\in E\setminus F$.
+    $\forall f \in E(C_e^T)$ platí, že $(T+e)-f$ je kostra $G$.
+\end{remark}
+
+
+\begin{definition}
+    Vážený graf $G_W = (V,E,w)$ tak ,že  $(V,E)$ je graf, $w: E\mapsto \mathbb{R}$
+\end{definition}
+
+\subsection{Nejmenší kostra/ Minimum Spanning Tree/ MST}
+Pro daný vážený graf (souvislý), najdi kostru $G$ nejmenší váhy.
+
+"SMŮNO" (s malou úhonou na obecnosti) předpokládejme že $w$ je prostá.
+
+\begin{claim}
+    Souvislý graf $G= (V,E)$ a $w: E\mapsto \mathbb{R}$ prostá.
+    Potom $(V,E,w)$ má právě jednu MST. 
+\end{claim}
+
+\subsubsection{Kruskalův algoritmus}
+Vstup $(V,E,w)$, $|E|=m, |V|=n$
+\begin{enumerate}
+    \item Seřaď $E$ dle vah. $e_1, e_2,...,e_m$ tak, že $w(e_i) < w(e_{i+1}), \forall i$
+    \item $T^\emptyset \coloneq \emptyset$
+    \item Pro $i=1$ do $m$. Pokud $T^{i-1} + e_i$ cyklus? Pokud ano přeskočíme,  jinak hranu přidáme.
+\end{enumerate}
+
+
+\subsection{Hledání nejkratší cesty}
+$w$ nemusí být prostá ale musí být nezáporná. 
+\begin{theorem}[Dijkstra]
+    $G=(V,E,w)$ vážený graf, $w: E\mapsto \mathbb{R}_0^+, s\in V$
+    potom existuje acycklický faktor $T_s=(V,F)$
+    tak , že  $\forall v \in V, dist_{G}(s,v) = dist_{T_S}(s,v)$    
+\end{theorem}
+
+\begin{proof}[Dijsktrův algoritmus]
+    \begin{enumerate}
+        \item $T^{(0)} \coloneq (\{ s\}, \emptyset), i=0$
+        \item Dokud $\exists e \in E$ napříč $V(T^{(i)})$ a $V \setminus V(T^{(i)})$
+        \begin{enumerate}
+            \item $e_i  = \{x,y\} \coloneq$ zvol tu hranu tak, že $x\in V(T^{(i)})$ a $y\notin V(T^{(i)})$ a výraz $dist_{T^{(i)}} (s,x) + w(e_i)$ je nejmenší množina
+            \item $T^{(i)} \coloneq (V(T^{(i)})) \cup \{ y \}, E(T^{(i)}) \cup \{ e_i \}$
+            \item $i\coloneq i + 1$ 
+        \end{enumerate}
+        \item $T_S \coloneq (V, {e_0,..., e_{i-1}})$
+    \end{enumerate}
+     
+\end{proof}
+
+
+
+
+\end{document}

@@ -1,0 +1,92 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}}
+\begin{document}
+
+\section*{2. domácí úlohy}
+
+\subsection*{1a)}
+\subsubsection*{Zadání}
+Pro každé přirozené $\delta\geq1$ dokažte, že souvislý graf
+$G=(V,E)$ s $\delta(G) = \delta$ obsahuje cestu s $\min\left\{2\delta, |V| - 1\right\}$
+hranami.
+
+\subsubsection*{Řešení}
+
+\subsection*{1b)}
+\subsubsection*{Zadání}
+Pro každé přirozené $\delta\geq1$ zkonstruujte nekonečně velkou
+množinu grafů $\mathcal{G}_\delta$ takovou, že každý $G\in\mathcal{G}_\delta$ je souvislý,
+má $\delta(G) = \delta$ a zároveň $G$ neobsahuje cestu s $2\delta +1$ hranami.
+
+\subsubsection*{Řešení}
+
+\subsection*{2a)}
+\subsubsection*{Zadání}
+Pro každé $n$ a $k\leq n$ určete (a následně dokažte!) minimální počet hran grafu
+s $n$ vrcholy a $k$ komponentami souvislosti.
+
+\subsubsection*{Řešení}
+
+\subsection*{2b)}
+\subsubsection*{Zadání}
+Pro každé $n$ a $k\leq n$ určete (a následně dokažte!) maximální počet hran grafu
+s $n$ vrcholy a $k$ komponentami souvislosti.
+
+
+\subsubsection*{Řešení}
+
+\subsection*{3a)}
+\subsubsection*{Zadání}
+Nechť $T=(V,E)$ je strom obsahující vrchol stupně $k\geq 3$.
+Dokažte, že $T$ má alespoň $k$ listů.
+\subsubsection*{Řešení}
+
+Označme vrchol stupně $k$ jako $v_0$. 
+Pokud je to kořen orientovaného grafu, tak máme $k$ větví a každá větev obsahuje alespoň 1 list.
+
+
+
+\subsection*{3b)}
+\subsubsection*{Zadání}
+Buď $G=(V,E)$ graf. Dokažte, že následující tvrzení jsou ekvivalentní.
+\begin{enumerate}
+    \item[(a)] $G$ je strom
+    \item[(b)] $G$ neobsahuje kružnici a $|V| = |E| + 1$
+\end{enumerate}
+
+\subsubsection*{Řešení}
+
+Z leva do prava - Kružnici neobsahuje z definice, vezměme list, ten odeberme 
+(má stupeň 1), tím odstraníme i vrchol, vzniká něco co je zase strom, takže můžeme
+opakovat dokud nedojdeme do stavu kdy máme 1 samotný vrchol. 
+
+Z prava do leva  -
+Chceme ukázat že je souvislý (protože už je bez cyklů). 
+
+
+\subsection*{4)}
+\subsubsection*{Zadání}
+
+Dokažte, že pro posloupnost $n\geq 2$ celých čísel 
+$1\geq d_1\geq d_2 \geq \dots \geq d_n$ jsou následující
+dvě podmínky ekvivalentní:
+\begin{enumerate}
+    \item[(a)] Existuje strom, který má skóre $(d_1, d_2, \dots, d_n)$
+    \item[(b)] $\sum_{i=1}^n d_i = 2n - 2$
+\end{enumerate}
+
+
+\subsubsection*{Řešení}
+
+
+\subsection*{5)}
+\subsubsection*{Zadání}
+
+Nechť $K_n^-$ je (až na izomorfismus jednoznačně určený) graf s $n$ vrcholy a $\binom{n}{2} -1$ hranami.
+Určete počet koster $K_n^-$ pro každé $n\geq 3$.
+
+\subsubsection*{Řešení}
+
+Vezměme všechny stromy pro graf s n vrcholy, tj $n^{n-2}$ a spočtěme kolik z těchto stromů obsahuje jednu koknkrétní hranu.
+
+\end{document}
