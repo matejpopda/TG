@@ -1,0 +1,125 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}}
+\begin{document}
+
+
+
+\section{Bipartitní grafy}
+
+\begin{definition}
+    $G=(V,E)$ graf je bipartitní, jestliže existuje rozklad $V=L \cup R$ tak, že $\forall e \in E : |e\cap L| = |e \cap R| = 1$
+\end{definition}
+
+\begin{remark}
+    Stromy jsou bipartitní 
+\end{remark}
+
+\begin{remark}
+    Sudé cykly jsou bipartitní
+\end{remark}
+
+\begin{remark}
+    Podgraf bipartitního grafu je bipartitní
+\end{remark}
+
+\begin{remark}
+    Liché cykly nejsou bipartitní
+\end{remark}
+
+\begin{theorem}
+    $G$ nemá lichý cyklus $\Leftrightarrow$ $G$ je bipartitní
+\end{theorem}
+
+\begin{definition}
+    $G=(V,E)$, $W\leq V$ je nezávislá množina (independent set, stable set) v $G$, jestliže podgraf indukovaný $W$, neboli $(W, \binom{W}{2} \cap E)$ je bez hran,
+    tzn $\forall e \in E, |e\cap W| \leq 1$
+\end{definition}
+
+\begin{theorem}
+    Bipartitní graf $\Leftrightarrow \exists L, R \subseteq V$, tak že $L,R$ nezávislá $\wedge V = L\cup R $ 
+\end{theorem}
+
+\begin{definition}
+    Délka tahu je jeho počet hran
+\end{definition}
+
+\begin{definition}
+    Tah je uzavřený jestli začíná a končí ve stejném vrcholu
+\end{definition}
+
+
+\begin{theorem}
+    Následující tvrzení jsou ekvivalentní
+    \begin{enumerate}
+        \item $G$ bipartitní
+        \item $G$ neobsahuje uzavřený tah liché délky
+        \item $G$ neobsahuje indukovaný podgraf $H$ který je izomorfní liché kružnici
+        \item $G$ neobsahuje lichý cyklus jako podgraf
+    \end{enumerate}
+\end{theorem}
+
+
+\begin{proof}
+    $1\implies 2 $
+
+    Spor $\exists$ uzavřený tah liché délky, když ale napíšeme jak by ten tah vypadal dostaneme spor 
+
+    $2\implies 3$ triviální
+
+    $3\implies 4$ 
+    
+    Pro spor: $G$ obsahuje lichou kružnici jako indukovaný podgraf, mezi všemi vem tu s nejkratší délkou.\\
+    Tento graf rozdělíme tětivou. Tím ale vzniká nový indukovaný graf, který obsahuje lichou kružnici kratší délky.
+
+    $4\implies 1$
+    
+    BŮNO $G$ je souvislý, T libovolná kostra G. Zvolme libovolný vrchol $s\in V$, L jsou vrcholy vzdálené o sudou vzdálenosst, R o lichou.\\
+    Každý fundamentální cyklus je pak buď v pořádku nebo v rozsporu s předpokladem.
+\end{proof}
+
+\begin{theorem}
+    $G=(V,E)$ graf obsahuje faktor $H=(V,F)$ tak, že $|F|\geq |E|/2$ a $H$ je bipartitní.
+\end{theorem}
+
+\begin{definition}
+    Sudý faktor grafu $G=(V,E)$ je faktor $H$ takový, že $\forall v\in V: deg_H(v)$ je sudé. 
+\end{definition}
+
+\begin{definition}
+Uvažme vektorový prostor nad $\mathbb{Z}_2$ dimenze $m=|E|$ BÚNO $E = \left\{e_1\dots e_m\right\}$.\\
+$\vec{v} \in \mathbb{Z}_2^m \leftrightarrow_{1:1} F\subseteq E $, nazveme charakteristický vektor F
+
+SBÚNO, G souvislý, T libovolná kostra G
+
+\begin{equation*}
+    \mathcal{C}_G \coloneq \left\{  \vec{v}_F \subset \mathbb{Z}_2^m: F\text{ sudý faktor}  \right\}
+\end{equation*}
+
+Nazýváme ho prostorem cyklů
+\end{definition}
+
+
+\begin{claim}
+    $ \mathcal{C}_G$ je vektorový podprostor $\mathbb{Z}_2^m$
+\end{claim}
+
+
+\begin{theorem}
+    $G=(V,E)$ souvislý graf, $T$ kostra $G$, potom $C_1, C_2, ..., C_{|E|-|V|+1}$ (všechny fundamentální cykly v T) tvoří bázi $ \mathcal{C}_G$
+\end{theorem}
+
+\begin{theorem}
+    $\forall G = (V,E)$ s alespoň jednou hranou, obsahuje indukovaný podgraf $H$ s $\delta(H) > \frac{|E|}{|V|}$
+\end{theorem}
+
+(Průměrný stupeň $2|E|/|V|$)
+
+
+
+
+
+
+
+
+
+\end{document}
