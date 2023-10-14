@@ -41,9 +41,23 @@ Nechť $T=(V,E)$ je strom obsahující vrchol stupně $k\geq 3$.
 Dokažte, že $T$ má alespoň $k$ listů.
 \subsubsection*{Řešení}
 
-Označme vrchol stupně $k$ jako $v_0$. 
-Pokud je to kořen orientovaného grafu, tak máme $k$ větví a každá větev obsahuje alespoň 1 list.
+Označme vrchol stupně $k$ jako $v_0$. Vytvořme zakořeněný strom (tj. orientovaný graf) tak, že vrchol $v_0$ bude kořenem. 
+Orientace stran je určena tak, aby hrany vedly směrem od kořene. \\
+Definujme potomka vrcholu $a$ jako vrchol do kterého vede hrana z vrcholu $a$.
 
+Dokažme pomocné tvrzení
+\begin{lemma*}
+    Z každého vrcholu v orientovaném stromu existuje cesta která je zakončená listem.
+\end{lemma*}
+\begin{proof}
+    Existují 2 možnosti. Buď je vrchol listem (v tom případě je cesta triviální), 
+    nebo zvolíme libovolný z jeho potomků a strom postupně procházíme.
+    Protože má strom konečný počet vrcholů a neobsahuje cyklus, 
+    vždy dorazíme do vrcholu který potomek nemá, tedy listu. 
+\end{proof}
+
+Vrchol $v_0$ je stupně $k$, má tedy $k$ potomků. Na každý z těchto vrcholů aplikujeme pomocné tvrzení.
+Je tedy zřejmé, že strom má alespoň $k$ listů. \qed
 
 
 \subsection*{3b)}
@@ -56,13 +70,57 @@ Buď $G=(V,E)$ graf. Dokažte, že následující tvrzení jsou ekvivalentní.
 
 \subsubsection*{Řešení}
 
-Z leva do prava - Kružnici neobsahuje z definice, vezměme list, ten odeberme 
-(má stupeň 1), tím odstraníme i vrchol, vzniká něco co je zase strom, takže můžeme
-opakovat dokud nedojdeme do stavu kdy máme 1 samotný vrchol. 
+Z (a) dokažme (b):
 
-Z prava do leva  -
-Chceme ukázat že je souvislý (protože už je bez cyklů). 
+Kružnici neobsahuje z definice.\\
+Vezměme libovolný list stromu a odeberme ho (i s hranou která do něj vede).
+Ze stromu jsme tedy odebrali jednu hranu a jeden vrchol. Graf který vznikl,
+je stále stromem, protože odebáním listu graf nepřestal být souvislý a odebráním hrany jsme nemohli vytvořit cyklus.\\
+Toto můžeme tedy opakovat. Nakonec se dostaneme do situace kdy nám v grafu zůstane pouze jeden vrchol.\\
+Jak jsme zmínili i toto je strom, a pro něj platí rovnice $|V|=|E|+1$ triviálně.
+Protože jsme se do tohoto stavu dostali postupným odečítáním 1 z obou stran rovnice, tak vztah musí platit i pro původní strom.
 
+
+Z (b) dokažme (a):
+
+Chceme ukázat že $\forall x,y \in V, \exists_1$ cesta v $G$ z $x$ do $y$. 
+
+Potřebujeme tedy ukázat, že mezi všemi vrcholy existuje nějaká cesta (tj. graf je souvislý) a poté, že existuje pouze jedna.
+
+
+\begin{lemma*}
+    Pokud $G$ neobsahuje kružnici a $|V| = |E| + 1$, tak potom je $G$ souvislý.
+\end{lemma*}
+\begin{proof}
+Pro spor předpokladáme, že není souvislý. \\
+Existují tedy alespoň 2 komponenty souvislosti.\\
+Graf označme jako $G = (G_V, G_E) = \bigcup_{i=1}^k K_i, K_i = (V_i, E_i)$, kde $K_i$ jsou jednotlivé komponenty souvislosti.
+
+Navíc platí, že souvislý graf o $n$ vrcholech, má nejméně $n - 1$ hran, jak bylo ukázáno v úkolu 2a) \\
+Z předpokladu platí \begin{align*}
+    |G_V| &= |G_E| + 1\\
+    \sum_{i} |V_i| &= \sum_i (|E_i|) + 1 > \sum_i (|V_i| - 1) + 1  
+\end{align*}
+
+Kde nerovnost platí pro $i>1$, tj. pro každý nesouvislý graf.\\
+Z toho plyne, že alespoň jedna komponenta souvislosti má více než $n-1$ hran, označme ji jako $H$.
+Navíc z definice platí, že komponenta souvislosti je souvislá.
+
+Z toho, ale plyne, že $H$ není strom, protože $H$ není do inkluze vůči hranám minimální souvislý graf.\\
+Nakonec využijme definice stromu, která říká, že strom je souvislý graf bez cyklů.
+Protože $H$ není strom, ale je souvislý, tak musí obsahovat cyklus, což je spor.
+\end{proof}
+
+
+Z pomocného tvrzení tedy plyne, že mezi každými 2 vrcholy tedy existuje nějaká cesta. To, že existuje právě jedna plyne z předpokladu o neexistenci kružnici v grafu.
+Pokud by totiž v grafu existovali 2 různé cesty z vrcholu $a$ do $b$, šlo by z nich triviálně vytvořit cyklus. \\Dokážeme sporem.\\
+Stačilo by vzít 2 vrcholy s nejmenší vzdáleností pro které existují alespoň 2 různé cesty, cyklus by šel pak vytvořit tím, že nejprve z bodu $a$ půjdeme do bodu $b$ jednou cestou a pak z bodu $b$ do bodu $a$.
+Tyto 2 cesty by měli společné pouze vrcholy $a$ a $b$ (jinak by existovaly 2 vrcholy s kratší vzdáleností) a tvořili by cyklus, což je spor s předpokladem.
+
+
+
+Tímto jsme dokázali ekvivalenci tvrzení.
+\qed
 
 \subsection*{4)}
 \subsubsection*{Zadání}
