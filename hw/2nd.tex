@@ -145,6 +145,33 @@ Určete počet koster $K_n^-$ pro každé $n\geq 3$.
 
 \subsubsection*{Řešení}
 
-Vezměme všechny stromy pro graf s n vrcholy, tj $n^{n-2}$ a spočtěme kolik z těchto stromů obsahuje jednu koknkrétní hranu.
+
+Nejprve najděme počet koster, které obsahují jednu konkrétní hranu. 
+Provedeme to tak, že spočteme celkový počet hran všech koster úplného grafu s $n$ vrcholy dvěma různými způsoby. 
+
+Z Caleyho formule víme, že na úplném grafu existuje $n^{n-2}$ koster. Dále víme, že každá kostra úplného grafu má $n-1$ hran, 
+(plyne z definice stromu jako do inkluze vůči hranám minimálního a souvislého grafu a z cvičení 2) ), proto celkem dostáváme $n^{n-2}(n-1)$ hran.
+
+Dále víme, že na úplném grafu patří každá hrana do stejného počtu koster 
+(plyne ze symetrie úlohy, není možné aby se jedna hrana lišila), toto číslo označme
+jako $k$. Dále víme, že v úplném grafu máme $\binom{n}{2}$ hran. Tedy každá hrana patří do $k$ stromů a celkem tedy máme $\binom{n}{2}k$ hran.
+
+Tyto dva vztahy se ale zřejmě musí rovnat. Dostáváme tedy 
+\begin{equation*}
+    n^{n-2}(n-1) = \binom{n}{2}k
+\end{equation*}
+Upravme a dostaneme 
+\begin{equation*}
+    k = n^{n-2}\frac{(n-1)}{\binom{n}{2}} = n^{n-2}\frac{2}{n} = 2n^{n-3}
+\end{equation*}
+Toto je tedy počet koster úplného grafu, které obsahují jednu konkrétní hranu.
+
+
+Abychom dostali počet koster $K_n^-$ stačí tedy toto číslo odečíst od celkového počtu koster. 
+\begin{equation*}
+    n^{n-2} - 2n^{n-3} = (n-2) n^{n-2}
+\end{equation*}
+
+Celkově tedy počet koster pro $K_n^-$ je $(n-2) n^{n-2}$.
 
 \end{document}
