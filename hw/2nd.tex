@@ -106,7 +106,25 @@ s $n$ vrcholy a $k$ komponentami souvislosti.
 
 \subsubsection*{Řešení}
 
+Zvolme libovolné pevné $n$. 
 
+Nejprve řešme případ s jednou komponentou souvislosti, tedy $k=1$:
+
+Hledáme tedy souvislý graf s minimálním počtem vrcholů, to je ale z definice strom. Pro něj platí $|E| = n-1$
+
+Případ $k>1$: 
+
+Vezměme $G= (V,E) =( \bigcup_{i=1}^k V_i  ,\bigcup_{i=1}^k E_i )$, kde $G_i = (V_i, E_i)$ jsou různé komponenty souvislosti $G$. Navíc $n= |V|$
+
+Platí, že $|E| = \sum_{i=1}^k|E_i|$. Protože $|E_i|>0$ stačí minimalizovat jednotlivé $E_i$.
+
+Protože ale platí, že jednotlivé komponenty souvislosti jsou souvislé podgrafy, tak z případu pro $k=1$ víme, že to nastává pro $|E_i| = |V_i| -1$.
+
+Celkem tedy dostáváme 
+\begin{equation*}
+    |E| = \sum_{i=1}^k|E_i| = \sum_{i=1}^k(|V_i| - 1) = |V| - k = n-k
+\end{equation*}
+\qed 
 
 
 \subsection{2b)}
@@ -117,12 +135,59 @@ s $n$ vrcholy a $k$ komponentami souvislosti.
 
 \subsubsection*{Řešení}
 
+Zvolme libovolné pevné $n$.
+
+Definujme graf  $G= (V,E) =( \bigcup_{i=1}^k V_i  ,\bigcup_{i=1}^k E_i )$, kde $G_i = (V_i, E_i)$ jsou různé komponenty souvislosti $G$.Navíc $n= |V|$
+
+
+Nejprve řešme případ s jednou komponentou souvislosti, tedy $k=1$:
+
+Nejvíce hran má úplný graf $K_n$, pro který platí $E(K_n) = \binom{|V|}{2} = \frac{(n - 1)n}{2}$.
+
+Případ $k=2$:
+
+Hledáme maximum $|E| = |E_1| + |E_2|$, navíc platí, že každá komponenta musí být úplný graf (jinak bychom do ní mohli přidat hranu).
+
+Platí, že $|V_1| =  n -|V_2|$
+
+Platí tedy 
+\begin{equation*}
+    |E| = |E_1| + |E_2| = \binom{|V_1|}{2} + \binom{|V_2|}{2} =  \binom{n -|V_2|}{2} + \binom{|V_2|}{2} = 
+    (|V_2| - \frac{1}{2}n)^2 + \frac{n^2}{4} -\frac{n}{2}
+\end{equation*}
+
+Výraz maximalizujeme pro $|V_2|$, $n$ je pevné, navíc platí $0 < |V_2| <n$.
+
+Jediné podezřelé body jsou pro $|V_2| = 1, n-1, \lceil\frac{n}{2}\rceil, \lfloor\frac{n}{2}\rfloor$, jednoduchým dosazením zjišťujeme, že maxima dosahujeme pro $|V_2| = 1$ a $|V_2| = n - 1$
+
+$G$ tedy má maximum hran, pokud je jeden vrchol osamocený, a druhá komponenta souvislosti je úplný graf.   Máme tedy
+\begin{equation*}
+    |E| = \binom{n - 1}{2}
+\end{equation*}
+
+Případ $k>2$:
+
+Hledáme maximum $|E| = \sum_{i=1}^k|E_i|$.
+
+Musí platit, že každé 2 různé komponenty souvislosti $G_j$, $G_k$ maximalizují $|E_j| + |E_k|$.
+Pokud by tomu tak nebylo, mohli bychom vzít vrcholy $V_j$ a $V_k$ a vytvořit z nich 2 nové komponenty, které by měli více hran.
+
+Z toho plyne, že mezi každou dvojicí různých komponentů souvislosti, je jeden z nich osamocený vrchol a jeden z nich úplný graf
+(osamocený vrchol je také úplný graf).
+
+Z této podmínky plyne, že máme $k-1$ osamocených vrcholů, a jeden úplný graf s $n - k + 1$ vrcholy.
+
+Celkově tedy dostáváme 
+\begin{equation*}
+    |E| = \binom{n - k + 1}{2}
+\end{equation*}
+
+
 \subsection{3a)}
 \subsubsection*{Zadání}
 Nechť $T=(V,E)$ je strom obsahující vrchol stupně $k\geq 3$.
 Dokažte, že $T$ má alespoň $k$ listů.
 \subsubsection*{Řešení}
-
 Označme vrchol stupně $k$ jako $v_0$. Vytvořme zakořeněný strom (tj. orientovaný graf) tak, že vrchol $v_0$ bude kořenem. 
 Orientace stran je určena tak, aby hrany vedly směrem od kořene. \\
 Definujme potomka vrcholu $a$ jako vrchol do kterého vede hrana z vrcholu $a$.
