@@ -19,11 +19,20 @@ kde $n$ je délka cesty. Množinu všech vrcholů cesty označme jako $P$.
 
 Platí následující 2 pozorování:
 
-Sousedé vrcholů $v_0$ a $v_n$ musí být v množině $P$, tj $N_G(v_0) \subseteq P \wedge N_G(v_n) \subseteq P$,
-pokud by tomu tak nebylo, tak by $P$ nebyla nejdelší cesta v $G$, 
-stačilo by totiž do cesty přidat bod který je v sousedství jednoho z koncových vrcholů a ještě v cestě není.
+\begin{lemma*}
+    Sousedé vrcholů $v_0$ a $v_n$ musí být v množině $P$, tj.\\ $N_G(v_0) \subseteq P \wedge N_G(v_n) \subseteq P$
+\end{lemma*}
 
-Pro žádné $i\in\{  1,2,...,n-2 \}$ neplatí, že $v_i \in N_G(v_n) \wedge v_{i+1} \in N_G(v_0)$ nebo $P = V$.
+\begin{proof}
+    Pokud by tomu tak nebylo, tak by $P$ nebyla nejdelší cesta v $G$, 
+    stačilo by totiž do cesty přidat bod který je v sousedství jednoho z koncových vrcholů a ještě v cestě není.
+    Což je spor s tím, že $P$ je nejdelší cesta.
+\end{proof}
+
+
+\begin{lemma*}
+    Pro žádné $i\in\{  1,2,...,n-2 \}$ neplatí, že $v_i \in N_G(v_n) \wedge v_{i+1} \in N_G(v_0)$ nebo $P = V$.
+\end{lemma*}
 \begin{proof}
     Sporem, tj $\exists i, v_i \in N_G(v_n) \wedge v_{i+1} \in N_G(v_0)$.
 
@@ -49,7 +58,7 @@ pak $\delta - 1$ sousedů $v_n$ a konečně $v_n$.
 Tato cesta má celkem $2\delta +1$ vrcholů, jde tedy o cestu délky $2\delta$.
 
 Případ $2\delta \geq |V|$ plyne z druhé části druhého tvrzení. $v_0$ a $v_n$ mají $\delta$ sousedů, 
-tj. mají alespoň 2 společné vrcholy, z toho neplatí první část druhého tvrzení, proto platí druhá.
+proto mají alespoň 2 společné vrcholy, z toho neplatí první část druhého tvrzení a proto platí druhá, tedy $P = V$
 
 Máme tedy cestu s $|V|$ vrcholy, ta má délku $|V|-1$.
 
@@ -66,12 +75,39 @@ má $\delta(G) = \delta$ a zároveň $G$ neobsahuje cestu s $2\delta +1$ hranami
 
 \subsubsection*{Řešení}
 
+Zvolme libovolné pevné $\delta$.
+
+Vytvořme následující množinu grafů $\{ G_2, G_3, ... \}$.
+
+$G_i$ vytvořme následovně. 
+
+Vezměme $i$ úplných grafů s $\delta$ vrcholy, označme $H_k$, mezi těmito grafy zatím neexistuje cesta.
+
+Do grafu pak přidejme vrchol $v_0$, tento vrchol bude propojený s každým jiným vrcholem.
+
+Je zřejmé, že indukované podgrafy $G_i$ které mají vrcholy $V(H_k) + v_0$ jsou úplné grafy s $\delta +1$ vrcholy, mají tedy stupeň $\delta$.
+
+Z toho plyne, že pro celkový graf platí $\delta(G_i) = \delta$. Tento graf je také zřejmě souvislý. 
+Navíc platí, že každá cesta mezi 2 podgrafy $H_k$ musí procházet přes $v_0$.
+
+Z tohoto plyne, že každá cesta navštíví nejvíce 2 podgrafy $H_k$ a 
+z toho dostáváme, že nejdelší možná cesta má délku $2\delta$.
+
+V podgrafu $H_k$ totiž nalezneme cestu délky $\delta -1$, pak se cestou přes 2 hrany dostaneme do jiného podgrafu $H_j$, kde nalezneme cestu o nejvíce $\delta-1$ vrcholech.
+
+Celkem tedy jako délku nejdelší cesty máme $2( \delta - 1) + 2 = 2\delta$. 
+
+
+
 \subsection{2a)}
 \subsubsection*{Zadání}
 Pro každé $n$ a $k\leq n$ určete (a následně dokažte!) minimální počet hran grafu
 s $n$ vrcholy a $k$ komponentami souvislosti.
 
 \subsubsection*{Řešení}
+
+
+
 
 \subsection{2b)}
 \subsubsection*{Zadání}
