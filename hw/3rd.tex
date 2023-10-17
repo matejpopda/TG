@@ -12,12 +12,70 @@ Buď $G=(V,E)$ $k$-regulární bipartitní graf s částmi $L$ a $R$. Dokažte, 
 
 \subsubsection*{Řešení}
 
+Počet hran vycházejících z $L$ je zřejmě $k |L|$, počet hran vycházejících z $R$, je zřejmě $|k|R$.
+
+Je zřejmé, že se oba tyto výrazy musí rovnat (jedná se o 2 různé způsoby jak spočíst všechny hrany v grafu), proto tedy $|L| = |R|$
+\qed
+
 
 \subsection{1b)}
 \subsubsection*{Zadání}
 Nalezněte, až na isomorfismus, všechny bipartitní grafy $G$, jejichž doplněk $\bar{G}$ je též bipartitní.
 
 \subsubsection*{Řešení}
+
+Po provedení doplňku se z $L$ a $R$ stanou úplné podgrafy. Vezměme tedy třeba úplný podgraf $\bar{L}$, 
+pokud je $|L|>2$ určitě by v něm existoval lichý cyklus. 
+Protože podgraf bipartitního grafu musí být také bipartitní dostáváme, že
+$|L|, |R| \leq 2$. 
+
+Z tohoto plyne, že aby pro  graf $G=(V,E)$ platilo, že jeho doplněk je bipartitní tak pak $|V|\leq 4$.
+
+Navíc také platí, že mezi každou trojicí vrcholů musí být buď 1 nebo 2 hrany. V opačném případě existuje v grafu nebo jeho doplňku lichý cyklus.
+
+Z toho plyne že $G$ nemůže být prázdný/úplný pro $|V|\geq 3$.
+
+Pro případ $|V| = 4$ tedy dostáváme následující grafy:
+
+Jako množinu vrcholů vezměme $[4]$. 
+
+BÚNO (jinak by šlo pouze o izomorfismus) má graf  hranu $\{1,2\}$. 
+Mezi vrcholy $2,3,4$ ale není žádná hrana, kvůli předchozímu tvrzení musíme mezi nimi jednu hranu přidat.
+Máme 2 možnosti (kvůli izomorfismu) buď přidáme hranu $\{2,3\}$ nebo $\{3,4\}$  $(\star)$.
+
+Pro případ $\{2,3\}$, ale opět chybí hrana mezi $1,3,4$, hranu $\{1,3\}$ přidat nemůžeme, vznikl by cyklus o délce 3. Proto přidáme 
+hranu například $\{3,4\}$ (druhá možnost je opět izomorfní s touto). Doplněk tohoto grafu je pak izomorfní se sebou samým. Rozdělení které existuje je $L = \{1,3\}, R = \{2,4\}$.
+
+Nakonec bychom k tomuto grafu ještě mohli přidat hranu $\{4,1\}$, vznikl by cyklus, doplněk tohoto grafu by byl izomorfní s grafem s hranami  $\{1,2\}, \{3,4\}$ (tímto jsme se dostali k $(\star)$, navíc z grafu s hranami $\{1,2\}, \{3,4\}$ dostaneme přidáním libovolné hrany graf isomorfní s předchozím případem).
+Tento graf je i se svým doplňkem opět bipartitní, volme například $L = \{1,3\}, R = \{2,4\}$.
+
+
+Případ $|V| = 3$:
+
+Jako množinu vrcholů vezměme $[3]$. 
+
+BÚNO má graf  hranu $\{1,2\}$. Přidáním další hrany dostaneme jeho doplněk a oba tyto grafy jsou bipartitní.
+
+Případ $|V| = 2$:
+
+Prázdný graf je zřejmě bipartitní, jeho doplněk je $G=([2], {1,2})$ je také.
+
+Případ $|V| = 1,0$:
+
+Oba dva tyto degenerované případy jsou bipartitní a jsou doplňkem sebe sama. 
+
+Na obrázku můžeme vidět všechny grafy s jejich doplňky (bez degenerovaných případů). 
+Obarvení určuje rozdělení do $L$ a $R$
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics[height=\linewidth]{images/BipartiteComplement.pdf}
+    \caption*{Všechny bipartitní grafy jejichž doplněk je také bipartitní}
+\end{figure}
+
+
+
+
 
 
 \subsection{2)}
