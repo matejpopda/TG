@@ -273,7 +273,7 @@ Tímto jsme dokázali ekvivalenci tvrzení.
 \subsubsection*{Zadání}
 
 Dokažte, že pro posloupnost $n\geq 2$ celých čísel 
-$1\geq d_1\geq d_2 \geq \dots \geq d_n$ jsou následující
+$1\leq d_1\leq d_2 \leq \dots \leq d_n$ jsou následující
 dvě podmínky ekvivalentní:
 \begin{enumerate}
     \item[(a)] Existuje strom, který má skóre $(d_1, d_2, \dots, d_n)$
@@ -282,6 +282,57 @@ dvě podmínky ekvivalentní:
 
 
 \subsubsection*{Řešení}
+
+
+Z (a) dokažme (b):
+
+Nechť existuje strom $T = (V,E)$, který má skóre $(d_1, d_2, \dots, d_n)$. $T$ je tedy souvislý a $|E|=|V|-1$.
+
+Potom platí (z handshaking lemmatu)
+\begin{equation*}
+    \sum_{i=1}^n d_i = \sum_{v\in V}deg(v) = 2|E| = 2(|V| - 1) = 2(n-1)
+\end{equation*}
+
+Z (b) dokažme (a):
+
+Dokážeme indukcí.
+
+Pro $n=2$:
+$1\leq d_1\leq d_2$, $d_1 + d_2 = 2$. Z toho máme $d_1 = d_2 = 1$.
+
+Jako strom zvolme $T=([2], \{ 1,2\})$. Tento strom má zřejmě skóre $(1,1)$.
+
+Indukční krok:
+
+
+Indukční předpoklad tedy je, že tvrzení platí pro $n$, tj. pokud $\sum_{i=1}^n d_i = 2n - 2$ tak existuje strom který má skóre $(d_1, d_2, \dots, d_n)$.
+
+Tvrzení dokažme pro $n+1$.
+
+Víme, že 
+\begin{equation*}
+    \sum_{i=1}^{n+1} d_i = 2(n+1) - 2
+\end{equation*}
+
+kde $1\leq d_1\leq d_2 \leq \dots \leq d_{n+1}$.
+
+Z tohoto plyne, že $d_1 =1$ (jinak by suma byla větší než pravá strana) a $d_{n+1} \geq 2$ (jinak by suma byla menší než pravá strana).
+
+Z posloupnosti $(d_1, d_2, ..., d_{n+1})$ odeberme $d_1$ a $d_{n+1}$ zaměňme za $d_{n+1} -1$.
+
+Z této posloupnosti, vytvoříme neklesající posloupnost čísel $g_1, ..., g_n$, ($g_n$ nemusí nutně být $d_{n+1}$) pro kterou platí 
+\begin{equation*}
+    \sum_{i=1}^{g+1} d_i = 2(n+1) - 2
+\end{equation*}
+
+Podle indukčního předpokladu pro tuto posloupnost existuje strom $T_n$ s jejím skóre.
+
+Tento strom obsahuje $v\in V$, $deg(v) = d_{n+1} - 1$, k tomuto vrcholu připojíme list, 
+a tím se změní stupeň $v$ na, $deg(v) = d_{n+1}$, zároveň má list stupeň 1, dáme ho na začátek posloupnosti. Tím dostáváme strom se skóre
+$(d_1, d_2, ..., d_n)$.
+
+Nakonec doplníme, že tento nový graf je stále stromem, neboť přidáním listu nemůže vzniknout cyklus nebo vzniknout nová komponenta souvislosti.
+
 
 
 \subsection{5)}
