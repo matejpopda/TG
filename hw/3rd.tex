@@ -95,21 +95,69 @@ Označme vrcholy cesty jako $v_1, ... v_5$, pak musí platit, že v grafu neexis
     \{v_1,v_3\},\{v_1,v_4\},\{v_1,v_5\},\{v_2,v_4\},\{v_2,v_5\},\{v_3,v_5\}
 \end{equation*}
 
-Navíc neexistuje vrchol $w\notin\{v_1,v_2,v_3,v_4,v_5\}$, pro který by existovala nějaká dvojice následujících hran.
+Navíc neexistují vrcholy $w,u\notin\{v_1,v_2,v_3,v_4,v_5\}$, pro který by existovala nějaká dvojice následujících hran (platí i pro $u$).
 
 \begin{equation*}    
-\left\{\{v_1, w\} \{w, v_4\}\right\},
-\left\{\{v_1, w\} \{w, v_5\}\right\},
-\left\{\{v_2, w\} \{w, v_5\}\right\}
+\left\{\{v_1, w\}, \{w, v_4\}\right\},
+\left\{\{v_1, w\}, \{w, v_5\}\right\},
+\left\{\{v_2, w\}, \{w, v_5\}\right\},
 \end{equation*}
 
-Obě dvě tyto omezení plynou z toho, že $v_1,...,v_5$ tvoří nejkratší cestu mezi $v_1$ a $v_5$.
+Navíc nemohou existovat následující 2 trojice $\left\{\{v_1, w\}, \{w,u\}, \{u, v_5\}\right\}$ nebo $\left\{\{v_1, w\}, \{w,u\}, \{u, v_5\}\right\}$.
+
+V3echny tři tyto omezení plynou z toho, že $v_1,...,v_5$ tvoří nejkratší cestu mezi $v_1$ a $v_5$.
 
 Provedeme  doplněk:
 
 Z druhého omezení plyne, že pro $\forall w,u \notin \{v_1,v_2,v_3,v_4,v_5\}$,
-máme vždy alespoň jednu z dvojice hran. 
+máme vždy alespoň jednu z každé dvojice hran, navíc existuje jedna z hran z jedné trojice z třetiho omezení. 
 
+Například tedy existuje  jedna z hran $\left\{\{v_1, w\}, \{w, v_5\}\right\}$ a 
+jedna z hran $\left\{\{v_1, u\}, \{u, v_5\}\right\}$. 
+
+Ukažme sporem, že toto implikuje, že mezi uzly $u,w$ existuje 
+nejkratší cesta délky nejvíce 2.
+
+\begin{proof}
+    Předpokládejme, že taková cesta neexistuje.
+
+    Zřejmě tedy musí platit, že pro libovolné $v\in\{v_1,...,v_5\}$ nemůže existovat dvojice hran $\left\{\{w,v\},\{v,u\}\right\}$, poté by totiž cesta určitě existovala.
+
+    Díky této podmínce dostaneme BÚNO (stačilo by přeznačit $u,w$) 
+    z první dvojice následující hrany $\{v_1, w\}, \{u, v_4\}$.
+
+    Z druhé dvojice máme jedinou možnost jak hrany zvolit a to $\{v_1, w\}, \{u, v_5\}$.
+
+    Z třetí dvojice máme opět jedinou možnost, a to jsou  hrany $\{v_2, w\}$, $\{u, v_5\}$.
+
+    $(\star)$ Máme tedy hrany $\{v_1, w\}, \{v_2, w\}, \{u, v_4\}, \{u, v_5\}$. 
+
+    Nakonec z třetího omezení máme $\left\{\{v_1, u\}, \{w,u\}, \{w, v_5\}\right\}$
+    existence libovolné hrany z této trojice je ale spor.
+     
+\end{proof}
+V doplňku tedy existuje cesta délky 2 mezi každými vrcholy, které nejsou součástí cesty.
+
+Zabývejme se nyní vrcholy na cestě.
+
+Z prvního omezení triviálně plyne, že vrcholy $v_1, v_3, v_5$  a $v_2, v_4$,
+tvoří úplné grafy, jsou od sebe tedy vzdálenost 1. 
+
+Navíc díky $(\star)$ platí, že tyto
+vrcholy jsou ve vzdálenosti 2 od libovolného vrcholu mimo cestu. 
+
+Z $(\star)$ také platí, že $dist(v_1,v_2) = 2$ a $dist(v_4,v_5) = 2$
+
+Chybí nám ukázat vzdálenosti mezi $v_1, v_4$, mezi $v_5, v_2$, mezi $v_2, v_3$ a mezi $v_3, v_4$.
+
+To opět plyne z prvního omezení.
+
+Triviálně pro $v_1, v_4$ a $v_5, v_2$.
+
+Pro $v_2, v_3$ volíme cestu procházející přes $v_5$, pro $v_3, v_4$ procházející přes $v_1$.
+
+Tím jsme ukázali, že pokuď má graf průměr alespoň 4, tak jeho doplněk má průměr nejvýše 2.
+\qed
 
 
 
