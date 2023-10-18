@@ -84,10 +84,17 @@ Pro graf $G=(V,E)$ označme průměrem $G$ maximální délku nejkratší cesty 
 
 \subsubsection*{Řešení}
 
+Pokud by graf měl více než jednu komponentu souvislosti tvrzení by pak bylo triviální, každý vrchol má totiž pak v sousedství všechny vrcholy z ostatních komponent, tj. nejkratší cesta mezi každými dvěma body je nejvýše 2.
+
+Řešme tedy případ s jednou komponentou souvislosti.
+
+
+
+
 
 \subsection{3)}
 \subsubsection*{Zadání}
-Pro graf $G=(V,E)$ označme $g(G)$ délku nejkratšího cyklu, který $G$ obsahuje; pokud je $G$ acycklický, definujeme $g(G)\coloneq \infty$.
+Pro graf $G=(V,E)$ označme $g(G)$ délku nejkratšího cyklu, který $G$ obsahuje; pokud je $G$ acyklický, definujeme $g(G)\coloneq \infty$.
 Poznamenejme, že parametru $g(G)$ se také říká obvod grafu.
 
 Buď $d\geq 3$ a $r\geq 2$ pevné a $G=(V,E)$ libovolný $d$-regulární graf. Dokažte
@@ -106,10 +113,31 @@ Analogicky nazveme vrchol $v\in V$ artikulací, jestliže indukovaný podgraf mn
 \subsection{4a)}
 \subsubsection*{Zadání}
 Dokažte, že každý $2k$- regulární graf neobsahuje most.
-
-
-
 \subsubsection*{Řešení}
+
+BÚNO mějme souvislý graf. 
+
+$k = 1$:
+\begin{lemma*}
+    Pro 2-regulární souvislý graf platí, že každý vrchol je součástí cyklu. 
+\end{lemma*}
+\begin{proof}
+    Mějme libovolně velký souvislý 2-regulární graf. 
+    Zvolme vrchol $v$ s jeho sousedy $w,u$, 
+    na tyto vrcholy klademe podmínku, že netvoří cyklus o délce 3. 
+    
+    Z tohoto grafu vyrobme menší graf tím, že odstraníme vrchol $v$ a přidáme hranu $\{w,u\}$, tím jsme dostali menší graf, touto operací určitě nezanikne žádný cyklus, zároveň pokud je uzel $w$ v cyklu v novém grafu tak byl uzel $v$  v cyklu v původním grafu. 
+    
+    Tuto operaci můžeme opakovat dokud nedostaneme graf s 3 vrcholy. Protože se jedná o 2 regulární graf tak se musí jednat o cyklus. 
+\end{proof}
+
+Z toho plyne, že každý $2$-regulární graf neobsahuje  most. 
+
+$k>1$:
+
+
+
+
 
 
 \subsection{4b)}
@@ -117,6 +145,21 @@ Dokažte, že každý $2k$- regulární graf neobsahuje most.
 Dokažte, že každý $k$-regulární bipartitní graf neobsahuje artikulaci.
 
 \subsubsection*{Řešení}
+
+Z 1a) víme, že  $|L|=|R|$. BÚNO mějme souvislý graf. 
+
+Pro $k=1$ je tvrzení triviální, máme graf $G=([2], \{1,2\})$, odebráním vrcholu dostaneme $G=([1], \emptyset)$ což je stále jedna komponenta.
+
+Uvažujme $k=2$: 
+
+Z lemmatu dokázaného pro 4b) víme, že každý vrchol v 2-regulárním grafu je součástí cyklu, 
+odstraněním jednoho vrcholu z cyklu určitě nedostaneme novou komponentu souvislosti.
+
+$k\geq 3$:
+
+Vezměme 
+
+
 
 
 \subsection{5a)}
