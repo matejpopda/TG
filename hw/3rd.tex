@@ -88,6 +88,28 @@ Pokud by graf měl více než jednu komponentu souvislosti tvrzení by pak bylo 
 
 Řešme tedy případ s jednou komponentou souvislosti.
 
+Protože graf má průměr $\geq4$ určitě obsahuje cestu nejkratší délky přesně 4, stačí z nejdelší nejkratší cesty vzít libovolné 4 po sobě jdoucí vrcholy.
+
+Označme vrcholy cesty jako $v_1, ... v_5$, pak musí platit, že v grafu neexistují následující hrany
+\begin{equation*}
+    \{v_1,v_3\},\{v_1,v_4\},\{v_1,v_5\},\{v_2,v_4\},\{v_2,v_5\},\{v_3,v_5\}
+\end{equation*}
+
+Navíc neexistuje vrchol $w\notin\{v_1,v_2,v_3,v_4,v_5\}$, pro který by existovala nějaká dvojice následujících hran.
+
+\begin{equation*}    
+\left\{\{v_1, w\} \{w, v_4\}\right\},
+\left\{\{v_1, w\} \{w, v_5\}\right\},
+\left\{\{v_2, w\} \{w, v_5\}\right\}
+\end{equation*}
+
+Obě dvě tyto omezení plynou z toho, že $v_1,...,v_5$ tvoří nejkratší cestu mezi $v_1$ a $v_5$.
+
+Provedeme  doplněk:
+
+Z druhého omezení plyne, že pro $\forall w,u \notin \{v_1,v_2,v_3,v_4,v_5\}$,
+máme vždy alespoň jednu z dvojice hran. 
+
 
 
 

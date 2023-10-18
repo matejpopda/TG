@@ -1,0 +1,102 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}}
+\begin{document}
+
+
+\begin{definition}
+    Multigraf $G=(V,E_M)$ kde $E_M$ je multimnožina (element tam  může být i víckrát) obsahující prvky $\binom{V}{2}$
+\end{definition}
+
+Alternativně 
+\begin{definition}
+    Vážený graf $(V,E,w)$, kde $w$ je násobnost, $w:E\mapsto \mathbb{N}$.
+\end{definition}
+
+Mezi těmito grafy existuje 1:1 korespondence.
+
+\begin{remark}
+    V literatuře někdy mohou existovat existovat 
+    smyčky (hrana z vrcholu do sebe sama) to my neuvažujeme. 
+\end{remark}
+
+
+\begin{definition}
+    Multigraf $G=(V,E,w)$ je souvislý, pokud je graf $(V,E)$ souvislý.
+\end{definition}
+
+
+\begin{definition}
+    Pro multigraf $G=(V,E_m)$ definujme počet koster $T(G) \coloneq \# F \subseteq E_m$ tak, že $F$ je strom. 
+\end{definition}
+
+
+\begin{definition}
+    Kontrakce hrany (pro multigrafy! bez smyček)
+    
+    Značíme $G/e$, multigraf po zkontrahování $e\in G$.
+
+    Výsledkem je multigraf $(V\setminus\{x,y\}\cup \{z\}, E^\star_M)$, kde
+    \begin{enumerate}
+        \item $\{u,v\}\in E_M$ tak, že $\{u,v\} \cap \{x,y\} = \emptyset \Leftrightarrow \{u,v\} \in E^\star_M$
+        \item $\{u,x\}\in E_M$ tak, že $u\neq y \Leftrightarrow \{u,z\}\in E^\star_M$
+        \item $\{u,y\}\in E_M$ tak, že $u\neq x \Leftrightarrow \{u,z\}\in E^\star_M$ 
+    \end{enumerate}
+    včetně násobnosti. 
+\end{definition}
+
+
+\begin{claim}
+    $T(G) = \#$ koster G obsahující $e + \#$ koster G neobsahujících e $= T(G/e) + T(G-e)$. 
+\end{claim}
+
+\begin{definition}
+    Matice sousednosti (adjacency matrix)
+
+    Multigraf $G = ([n], E_M)$
+
+    Matice $A_G\in \mathbb{N}^{nxn}$, symetrická, na diagonále nuly. $a_{ij} = $ násobnost hrany $\{i,j\}$
+\end{definition}
+
+\begin{claim}
+    $G=([n], E_M)$ multigraf, $A_G$ jeho matice sousednosti 
+    $\forall k \in \mathbb{N}_{>0}, i,j\in V$ platí, že $(A_G)^k$ 
+    je matice $nxn$ kde na pozici $i,j$ je počet sledů s $k$ hranami 
+    v $G$ z $i$ do $j$.
+\end{claim}
+
+
+\begin{definition}
+    Matice incidence grafu $G=([n], E_M), |E_M| = m$ je booleovská matice.
+
+    Matice  o rozměru $nxm$.
+
+    Sloupec odpovídá hraně $e_i$, řádek obsahuje 1 pokud hrana obsahuje vrchol $j$. Jinak 0.
+
+    Značí se jako $B_G$
+\end{definition}
+
+
+\begin{claim}
+    $G=(V,E)$ graf, $\lambda_1$ největší vlastní číslo jeho spektra (tj. matice $A_G$). $\delta$ je minimální stupeň vrcholů, $\Delta$ je maximální stupeň vrcholů.
+
+    Pak platí $\delta \leq \text{průměrný stupeň} \leq \lambda_1 \leq \Delta$
+\end{claim}
+
+
+\begin{definition}
+    Laplaceova matice multigrafu $G=([n], E_M)$.
+
+    Symetrická matice $L_G\in \mathbb{N}^{nxn}$. Na diagonále má stupně vrcholů, $l_{ij} = -$ násobnosti hrany $\{i,j\}$
+\end{definition}
+
+\begin{claim}
+    $L_G$ je singulární
+\end{claim}
+
+\begin{claim}
+    $L_G\geq 0$, tj, pozitivně semi-definitní.
+\end{claim}
+
+
+
+\end{document}
