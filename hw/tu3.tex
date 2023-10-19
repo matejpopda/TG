@@ -1,0 +1,44 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}}
+
+\setcounter{secnumdepth}{0}
+\begin{document}
+
+\section{Těžká úloha 3}
+
+\subsection{Zadání a)}
+Dokažte, že počet neizomorfních stromů s $n$ vrcholy je nejvýše $4^n$.
+
+\subsection{Řešení a)}
+
+
+
+
+\subsection{Zadání b)}
+Dokažte, že $G=(V,E)$ splňující $|V|\geq 3$ a $|E| < \binom{|V|}{2}$ je strom $\Leftrightarrow$ pro každé $f\in\binom{V}{2}\setminus E$ platí, že $G + f$ obsahuje právě jeden cyklus.
+\subsection{Řešení b)}
+
+Dokažme $(\implies)$: 
+
+Definice stromu je graf který jej do inkluze vůči hranám maximální graf neobsahující cyklus. Přidáním vrcholu tedy cyklus vznikne.
+
+Ukažme sporem, že přidáním hrany vznikne právě jeden cyklus. 
+
+Předpokládejme tedy, že přidáním hrany do stromu vznikly alespoň 2 cykly. 
+
+Dokažme $(\impliedby)$:
+
+Přidáním hrany do grafu se počet cyklů může pouze zvýšit.
+Protože přidáním hrany vznikne právě jeden cyklus, tak původní graf může mít buď 1 nebo 0 cyklů.
+
+Pokuď měl původní graf 0 cyklů, tak byl vůči hranám maximální bez cyklů, tedy strom.
+
+Nakonec sporem ukažme, že původní graf nemůže obsahovat cyklus.
+
+Předpokládejme tedy, že v grafu $G=(V,E)$ existuje právě jeden cyklus a dále $\forall f\in \binom{V}{2}\setminus E$ platí, že $G+f$ obsahuje právě jeden cyklus.
+
+Pokud by délka cyklu byla větší než 4, tak bychom mohli přidat novou hranu, která spojuje dva vrcholy z cyklu, tím by vznikly 2 další cykly, což by byl spor.
+
+Mějme tedy cyklus o délce 3. 
+
+\end{document}

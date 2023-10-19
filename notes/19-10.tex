@@ -1,0 +1,64 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}}
+\begin{document}
+
+\begin{claim}
+    $G=([n], E_M)$ multigraf je souvislý $\Leftrightarrow h(L_G) = n-1$ 
+\end{claim}
+
+
+\begin{definition}
+    $L_G^{(i)} \coloneq $ matice získaná z $L_G$ odstraněním $i$-tého řádku a sloupce.
+\end{definition}
+
+\begin{claim}
+    $L_G^{(i)} $není$ L_{G-i}$
+\end{claim}
+
+\begin{theorem}
+    $\forall i \in [n], \det L_G^{(i)} = $ počet koster multigrafu $G = [n, E_M]$
+\end{theorem}
+
+\subsection{Eulerovský tah}
+
+\begin{definition}
+    Multigraf $G=(V,E_M)$ lze nakreslit jedním tahem $\Leftrightarrow$ $\exists$ tah v $G$ obsahující všechny prvky $E_M$    
+\end{definition}
+
+
+\begin{definition}[přijemnější verze]
+    Multigraf $G=(V,E_M)$ lze nakreslit jedním tahem $\Leftrightarrow$ $\exists$ uzavřený tah    
+\end{definition}
+
+\begin{claim}
+    Nutná podmínka $\exists E$ (Eulerovského tahu) $\implies$ stupeň je sudý a $G$ je souvislý. 
+\end{claim}
+
+\begin{theorem}[Eulerova]
+    Nutná podmínka je i postačující!
+\end{theorem}
+
+\begin{proof}
+    Buď $T$ nejdelší (vůči počtu hran) tah v $G$.
+
+    Tvrdíme, že T musí být uzavřený tah. Pro spor 
+    předpokládejme, že není. Pak by koncový vrchol T je koncem 
+    lichého počtu hran T, avšak $deg_G$ je sudý $\implies \exists f \notin T$ a $T+f$ je delší tah.
+    
+    T obsahuje všechny hrany
+
+    Máme tah $T=v_0 e_1 v_1 ... e_l v_l$\& $\exists f \in E_M\setminus T$. 
+    Protože graf je souvislý tak $f$ souvisí s tahem, pokuď bychom tah začali ve vrcholu který s ním souvisí, tak by byla delší cesta
+\end{proof}
+
+
+\begin{corollary}
+    $G$ je souvislý a počet vrcholů lichého stupně je buď 0 nebo 2 $\Leftrightarrow \exists $ tah v $G$ obsahující všechny hrany. 
+\end{corollary}
+
+\begin{proof}
+    Spojíme hranou 2 vrcholy lichého stupně, z Eulerovy věty vytvoříme uzavřený tah, a přidaný vrchol odstraníme.
+\end{proof}
+
+
+\end{document}
