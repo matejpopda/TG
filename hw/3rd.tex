@@ -110,7 +110,7 @@ Všechny tři tyto omezení plynou z toho, že $v_1,...,v_5$ tvoří nejkratší
 Provedeme  doplněk:
 
 Z druhého omezení plyne, že pro $\forall w,u \notin \{v_1,v_2,v_3,v_4,v_5\}$,
-máme vždy alespoň jednu z každé dvojice hran, navíc existuje jedna z hran z jedné trojice z třetiho omezení. 
+máme vždy alespoň jednu z každé dvojice hran, navíc existuje jedna z hran z každé trojice z třetího omezení. 
 
 Například tedy existuje  jedna z hran $\left\{\{v_1, w\}, \{w, v_5\}\right\}$ a 
 jedna z hran $\left\{\{v_1, u\}, \{u, v_5\}\right\}$. 
@@ -130,7 +130,7 @@ nejkratší cesta délky nejvíce 2.
 
     Z třetí dvojice máme opět jedinou možnost, a to jsou  hrany $\{v_2, w\}$, $\{u, v_5\}$.
 
-    $(\star)$ Máme tedy hrany $\{v_1, w\}, \{v_2, w\}, \{u, v_4\}, \{u, v_5\}$. 
+    Máme tedy hrany $\{v_1, w\}, \{v_2, w\}, \{u, v_4\}, \{u, v_5\}$. 
 
     Nakonec z třetího omezení máme $\left\{\{v_1, u\}, \{w,u\}, \{w, v_5\}\right\}$
     existence libovolné hrany z této trojice je ale spor.
@@ -143,8 +143,12 @@ Zabývejme se nyní vrcholy na cestě.
 Z prvního omezení triviálně plyne, že vrcholy $v_1, v_3, v_5$  a $v_2, v_4$,
 tvoří úplné grafy, jsou od sebe tedy vzdálenost 1. 
 
-Navíc díky $(\star)$ platí, že tyto  \todo{možná není úplně správně}
-vrcholy jsou ve vzdálenosti 2 od libovolného vrcholu mimo cestu. 
+Navíc díky první a druhé podmínce platí, že tyto
+vrcholy jsou ve vzdálenosti 2 od libovolného vrcholu mimo cestu.\\
+Například pro vrchol $v_1$ máme z druhé podmínky existenci jedné z 
+hran $\left\{\{v_1, w\}, \{w, v_4\}\right\}$ a z první podmínky máme v doplňku hranu $\{v_1,v_4\}$, 
+z toho plyne zřejmě plyne, že buď existuje cesta $v_1, w$ nebo cesta $v_1, v_4, w$.\\
+Stejně můžeme postupovat i pro vrcholy $v_2, ... , v_5$
 
 % Z $(\star)$ také platí, že $dist(v_1,v_2) = 2$ a $dist(v_4,v_5) = 2$
 

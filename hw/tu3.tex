@@ -7,38 +7,160 @@
 \section{Těžká úloha 3}
 
 \subsection{Zadání a)}
-Dokažte, že počet neizomorfních stromů s $n$ vrcholy je nejvýše $4^n$.
+Dokažte, že počet neisomorfních stromů s $n$ vrcholy je nejvýše $4^n$.
 
 \subsection{Řešení a)}
 
+Zabývejme se počtem uspořádaných orientovaných stromů na $n$ vrcholech.
+Jejich počet je větší než počet neuspořádaných orientovaných stromů, a ten je větší než počet neorientovaných stromů. 
+Toto plyne z pozorování, že 
+každý isomorfismus na orientovaném grafu funguje také pro neorientovaný 
+graf, navíc je možné, 
+že změněním dvou navzájem neisomorfních orientovaných stromů na neorientované, 
+vzniknou stromy isomorfní. 
+
+Mějme tedy libovolný uspořádaný orientovaný strom $T=(V,E)$. Označme jeho kořen jako $v_0$.
+
+Pro jednoduchost definujme množinu $L(k) = \{v\in V\mid dist(v_0, v) = k \}$.
+
+Dále definujme $k$-té patro jako uspořádanou $|L(k)|$-tici vrcholů, která obsahuje 
+všechny vrcholy z $L(k)$. 
+
+Navíc definujme pozici vrcholu v $k$-tém patře následovně, řekněme, že 
+vrchol $v$ je nalevo od vrcholu $w$, pokud se $v$ v uspořádané $|L(k)|$-tici vyskytuje před $w$. 
+Řekněme, že $v$ je napravo od $w$, právě pokud $w$ je nalevo od $w$.
 
 
 
-\subsection{Zadání b)}
-Dokažte, že $G=(V,E)$ splňující $|V|\geq 3$ a $|E| < \binom{|V|}{2}$ je strom $\Leftrightarrow$ pro každé $f\in\binom{V}{2}\setminus E$ platí, že $G + f$ obsahuje právě jeden cyklus.
-\subsection{Řešení b)}
+V této úloze pro uspořádání stromu požadujme následující. 
+Pokud pro předka $v$ platí, že je nalevo od předka $w$, 
+tak musí platit že $v$ je nalevo od $w$.
 
-Dokažme $(\implies)$: 
+V této úloze navíc zaveďme následující značení pro binární posloupnosti.
+Místo psaní například $(1,0,1,0,1,1,0)$ pišme $1010110$.
 
-Definice stromu je graf který jej do inkluze vůči hranám maximální graf neobsahující cyklus. Přidáním vrcholu tedy cyklus vznikne.
+Definujme následující prosté zobrazení $f_n$ mezi orientovaným stromem s $n$ vrcholy $T_n$ a binární posloupností $b$ složenou z číslic 1 a 0. 
 
-Ukažme sporem, že přidáním hrany vznikne právě jeden cyklus. 
+$f_n: T_n\mapsto (b)_{i=1}^{2n}$ funguje následujícím způsobem. 
+Stromem $T$ postupně projdeme všechny vrcholy po patrech zleva doprava a u každého vrcholu 
+do výsledné posloupnosti 
+zapisujeme tolik jedniček, jaký je počet jeho potomků. Po zapsání počtu potomků 
+zapišme do posloupnosti 0 (i v případě, že vrchol potomka nemá). Výsledná posloupnost má délku $2n-1$ (ukážeme později), 
+přidáme tedy jednu $0$ aby měla délku $2n$.
 
-Předpokládejme tedy, že přidáním hrany do stromu vznikly alespoň 2 cykly. 
+Výsledkem je tedy posloupnost o délce $2n$.
 
-Dokažme $(\impliedby)$:
+\begin{example}
+    Předpokládejme strom $R=([5], \{(1,2), (2,3), (1,4), (4,5)\})$.\\
+    Začněme tedy ve vrcholu $1$, ten obsahuje dva potomky, proto do výsledné posloupnosti zapisujeme $110$.\\
+    Zvolme jeden z potomků v prvním patře stromu, například $2$, ten obsahuje jednoho potomka, do posloupnosti tedy přidáme $10$.\\
+    Následně zvolme druhého potomka v prvním patře, tedy $4$, tento vrchol obsahuje jednoho potomka, do posloupnosti přidáme $10$.\\
+    Protože jsme prošli všechny vrcholy v prvním patře pokračujeme do druhého patra.\\
+    V druhém patře se nachází 2 vrcholy ($3$ a $5$), protože ale požadujeme aby byly správně uspořádané musí vzít vrchol $3$, 
+    ten nemá potomka, do posloupnosti zapisujeme tedy $0$, nakonec zbývá vrchol $5$, ten potomky nemá, do posloupnosti tedy přidejme $0$.\\
+    Máme posloupnost délky 9, přidáme $0$ abychom měli posloupnost délky 10. 
+     
+    Celkem dostáváme $f_5(R) = 1101010000$. 
+    
+\end{example}
+Na následujících obrázcích můžeme vidět několik dalších příkladů. V druhém řádku vidíme dva grafy, které mají různou posloupnost pouze díky různému uspořádání, 
+pokud bychom je uvažovali jako neuspořádané orientované stromy tak by byli isomorfní.
 
-Přidáním hrany do grafu se počet cyklů může pouze zvýšit.
-Protože přidáním hrany vznikne právě jeden cyklus, tak původní graf může mít buď 1 nebo 0 cyklů.
 
-Pokuď měl původní graf 0 cyklů, tak byl vůči hranám maximální bez cyklů, tedy strom.
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics*[width=0.49\textwidth]{images/tu3/1101010000.png}
+        \caption*{Graf s posloupností 1101010000 }
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics*[width=0.49\textwidth]{images/tu3/10101000.png}
+        \caption*{Graf s posloupností 10101000 }
+    \end{subfigure}
 
-Nakonec sporem ukažme, že původní graf nemůže obsahovat cyklus.
 
-Předpokládejme tedy, že v grafu $G=(V,E)$ existuje právě jeden cyklus a dále $\forall f\in \binom{V}{2}\setminus E$ platí, že $G+f$ obsahuje právě jeden cyklus.
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics*[width=0.49\textwidth]{images/tu3/110011001000.png}
+        \caption*{Graf s posloupností 110011001000}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.49\textwidth}
+        \centering
+        \includegraphics*[width=0.49\textwidth]{images/tu3/110110001000.png}
+        \caption*{Graf s posloupností 110110001000}
+    \end{subfigure}
 
-Pokud by délka cyklu byla větší než 4, tak bychom mohli přidat novou hranu, která spojuje dva vrcholy z cyklu, tím by vznikly 2 další cykly, což by byl spor.
+\end{figure}
 
-Mějme tedy cyklus o délce 3. 
+
+$f_n$ má zřejmě jako svůj definiční obor všechny orientované grafy s $n$ vrcholy, protože algoritmus pro vytvoření výsledné posloupnosti
+který používáme funguje pro každý orientovaný strom. $f_n$ není surjektivní, například pro posloupnost $2n$ jedniček neexistuje inverzní zobrazení. 
+
+Ukažme, že $f_n$ vždy zobrazí do posloupnosti o délky $2n$
+\begin{proof}
+    Toto plyne z pozorování, že každý člen (kromě kořene) přispěje do posloupnosti 
+    jednou číslicí $1$ a jednou číslicí $0$. $1$ protože se vyskytuje jako potomek právě jednoho vrcholu, $0$ poté co projdeme všechny jeho potomky. 
+    Jedinou výjimkou je kořen, který předka nemá a proto do posloupnosti přispěje jednou $0$.
+
+    Z toho tedy máme že vrcholy kromě kořene přispějí, $2(n-1)$ členy, kořen jedním členem a funkce samotná na konec posloupnosti přidá jednu 0. Z toho máme \begin{equation*}
+        2(n-1) + 1 + 1 = 2n 
+    \end{equation*}
+\end{proof}
+
+Ukažme nyní, že $f_n$ je injektivní.
+
+\begin{proof}
+    Stačí ukázat, že existuje zobrazení $g_n: (b)_{i=1}^{2n} \mapsto T_n$ tak aby $g_n(f_n(x)) = x, \forall x \in T_n$, tj. že zobrazení $f_n$ je invertibilní zleva.
+
+    Toto zobrazení ale určitě existuje, stačí posloupnost procházet zleva doprava a postupně vrcholům přidávat potomky 
+    pro každou $1$. Poté co v posloupnosti narazíme na $0$ tak se buď přesuneme do vrcholu, který je napravo, 
+    nebo pokud takový vrchol neexistuje tak se přesuneme do vrcholu nejvíce vlevo v dalším patře.
+\end{proof}
+
+
+Protože $f_n$ je injektivní a není surjektivní, tak platí, že množina do které $f_n$ zobrazuje je větší než definiční obor $D(f_n) = T_n$.
+
+Počet všech binárních posloupností o velikosti $2n$ označme jako $P_{2n}$ a platí  $P_{2n} = 2^{2n} = 4^n$.
+
+
+Konečně tedy platí,
+\begin{multline*}
+\# \text{neisomorfních stromů s }n\text{ vrcholy} \leq\\\leq \# \text{orientovaných stromů s }n\text{ vrcholy} = D(f_n) < 4^n
+\end{multline*}
+
+\qed
+
+
+
+% \subsection{Zadání b)}
+% Dokažte, že $G=(V,E)$ splňující $|V|\geq 3$ a $|E| < \binom{|V|}{2}$ je strom $\Leftrightarrow$ pro každé $f\in\binom{V}{2}\setminus E$ platí, že $G + f$ obsahuje právě jeden cyklus.
+% \subsection{Řešení b)}
+
+% Dokažme $(\implies)$: 
+
+% Definice stromu je graf který jej do inkluze vůči hranám maximální graf neobsahující cyklus. Přidáním vrcholu tedy cyklus vznikne.
+
+% Ukažme sporem, že přidáním hrany vznikne právě jeden cyklus. 
+
+% Předpokládejme tedy, že přidáním hrany do stromu vznikly alespoň 2 cykly. 
+
+% Dokažme $(\impliedby)$:
+
+% Přidáním hrany do grafu se počet cyklů může pouze zvýšit.
+% Protože přidáním hrany vznikne právě jeden cyklus, tak původní graf může mít buď 1 nebo 0 cyklů.
+
+% Pokuď měl původní graf 0 cyklů, tak byl vůči hranám maximální bez cyklů, tedy strom.
+
+% Nakonec sporem ukažme, že původní graf nemůže obsahovat cyklus.
+
+% Předpokládejme tedy, že v grafu $G=(V,E)$ existuje právě jeden cyklus a dále $\forall f\in \binom{V}{2}\setminus E$ platí, že $G+f$ obsahuje právě jeden cyklus.
+
+% Pokud by délka cyklu byla větší než 4, tak bychom mohli přidat novou hranu, která spojuje dva vrcholy z cyklu, tím by vznikly 2 další cykly, což by byl spor.
+
+% Mějme tedy cyklus o délce 3. 
 
 \end{document}
