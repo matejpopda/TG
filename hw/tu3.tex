@@ -11,13 +11,12 @@ Dokažte, že počet neisomorfních stromů s $n$ vrcholy je nejvýše $4^n$.
 
 \subsection{Řešení a)}
 
-Zabývejme se počtem uspořádaných orientovaných stromů na $n$ vrcholech.
-Jejich počet je větší než počet neuspořádaných orientovaných stromů, a ten je větší než počet neorientovaných stromů. 
+Zabývejme se počtem neisomorfních uspořádaných orientovaných stromů na $n$ vrcholech.
+Jejich počet je větší než počet neisomorfních neuspořádaných orientovaných stromů, a ten je větší než počet neisomorfních neorientovaných stromů. 
 Toto plyne z pozorování, že 
 každý isomorfismus na orientovaném grafu funguje také pro neorientovaný 
-graf, navíc je možné, 
-že změněním dvou navzájem neisomorfních orientovaných stromů na neorientované, 
-vzniknou stromy isomorfní. 
+graf, navíc změněním dvou navzájem neisomorfních orientovaných stromů na neorientované, 
+mohou vzniknout neorientované stromy isomorfní. 
 
 Mějme tedy libovolný uspořádaný orientovaný strom $T=(V,E)$. Označme jeho kořen jako $v_0$.
 
@@ -28,7 +27,7 @@ všechny vrcholy z $L(k)$.
 
 Navíc definujme pozici vrcholu v $k$-tém patře následovně, řekněme, že 
 vrchol $v$ je nalevo od vrcholu $w$, pokud se $v$ v uspořádané $|L(k)|$-tici vyskytuje před $w$. 
-Řekněme, že $v$ je napravo od $w$, právě pokud $w$ je nalevo od $w$.
+Řekněme, že $v$ je napravo od $w$, právě pokud $w$ je nalevo od $v$.
 
 
 
