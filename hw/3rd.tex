@@ -238,19 +238,62 @@ Vezměme
 
 \subsection{5a)}
 \subsubsection*{Zadání}
-Buď $G=(V,E)$ neprázdný graf a buď $d \coloneq \frac{|E|}{|V|}$. Dokažte, že $G$ obsahuje indukovaný podgraf $H$ splňující $\delta(H) > d$.
+Buď $G=(V,E)$ neprázdný graf a buď $d \coloneq \frac{|E|}{|V|}$. 
+Dokažte, že $G$ obsahuje indukovaný podgraf $H$ splňující $\delta(H) > d$.
 
 (Nápověda: zkuste z $G$ postupně odebírat vrcholy stupně nejvýše $d$.)
 
 \subsubsection*{Řešení}
 
+Postupujme podle nápovědy. Vezměme graf $G_i = (V_i, E_i)$ a 
+odeberme z něj vrchol stupně nejvýše $d_i \coloneq \frac{|E|}{|V|}$, tím vytvoříme graf $G_{i+1}$
+
+Platí, že $d_i \leq d_{i+1}$. Toto plyne z \todo{Upravit}
+\begin{equation*}
+    \frac{|E_i|}{|V_i|} \leq \frac{|E_{i+1}|}{|V_{i+1}|} = \frac{E_{i} - \frac{|E_i|}{|V_i|}}{|V_i| - 1} 
+\end{equation*}
+
+Toto opakujeme, dokud se nedostaneme do situace, kdy v grafu není vrchol, který by měl stupeň menší než $d_i$.\\
+Tím dostáváme graf, kde máme alespoň $n$ vrcholů nejméně stupně $d_i$, což jsme chtěli ukázat. 
+
 
 \subsection{5b)}
 \subsubsection*{Zadání}
 Pro každé přirozené $d\geq 1$ a každé $\varepsilon\in(0,1)$ zkonstruujte graf $G_{d,\varepsilon}= (V,E)$
-takový, že splňuje $\frac{|E|}{|V|} > d - \varepsilon$ a zároveň $\delta(H)\leq d$ pro každý podgraf $H \subseteq G_{d,\varepsilon}$.
+takový, že splňuje $\frac{|E|}{|V|} > d - \varepsilon$ a 
+zároveň $\delta(H)\leq d$ pro každý podgraf $H \subseteq G_{d,\varepsilon}$.
 
 
 \subsubsection*{Řešení}
+
+Vezměme $i$-regulární graf $G$ o $2n$ vrcholech ($i<2n$).
+Z handshaking lemmatu pak dostaneme, že $2|E| = 2in$. Odeberme z něj jednu hranu a máme 
+
+\begin{equation*}
+    |E| = in - 1
+\end{equation*}
+
+% V dalším kroku konstrukce vezměme $n$ grafů $G$. Vytvořme nový nesouvislý graf $H$, 
+% kde každé $G$ je jedna z jeho komponent souvislosti.
+% Tento graf má zřejmě $|V| = 2n$ vrcholů.\\
+% Dále jednoduše dostáváme, že $G$ má 
+% \begin{equation*}
+%     |E| = n(\frac{ik}{2} - 1)
+% \end{equation*} 
+% hran. 
+Z toho máme, 
+\begin{equation*}
+    \frac{|E|}{|V|} = \frac{i}{2} - \frac{1}{2n}
+\end{equation*}
+
+$i$ zvolme tak, aby platilo $i = d$. 
+
+$2n$ můžeme zvolit libovolně velké a proto tedy existuje $n$ tak, že člen $\frac{1}{2n} < \varepsilon$ pro libovolné $\varepsilon$.
+
+Navíc, protože graf má sudý počet vrcholů tak víme, že existuje (plyne z první série úkolů).
+
+Tímto jsme sestrojili graf, který splňuje $\frac{|E|}{|V|} > d - \varepsilon$. 
+
+Protože je ale původní graf je $i$-regulární/$d$-regulární, tak i každý jeho indukovaný podgraf je nejvíce $d$-regulární.
 
 \end{document}
