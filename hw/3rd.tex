@@ -160,7 +160,7 @@ Triviálně pro $v_1, v_4$ a $v_5, v_2$.
 
 Pro $v_2, v_3$ volíme cestu procházející přes $v_5$, pro $v_3, v_4$ procházející přes $v_1$.
 
-Tím jsme ukázali, že pokuď má graf průměr alespoň 4, tak jeho doplněk má průměr nejvýše 2.
+Tím jsme ukázali, že pokud má graf průměr alespoň 4, tak jeho doplněk má průměr nejvýše 2.
 \qed
 
 
@@ -179,6 +179,43 @@ Buď $d\geq 3$ a $r\geq 2$ pevné a $G=(V,E)$ libovolný $d$-regulární graf. D
 
 \subsubsection*{Řešení}
 
+Pro jednoduchost definujme $k$-té patro jako množinu $L(k) = \{v\in V\mid dist(v_0, v) = k \}$.
+
+Řešme první případ. 
+
+
+Vezměme vrchol $v_0$, z $d$-regularity platí, že vrchol musí mít alespoň $d$ potomků. 
+Navíc platí, že tyto potomci nemohou být spojeny, jinak vznikne cyklus délky $3$ (méně než $2r, r\geq 2$).
+
+Každý z těchto potomků, ale musí mít $d-1$ vlastních potomků. Pro tyto potomky v 2. patře platí, 
+že pokud je $r\geq 3$ tak nemohou být propojené mezi sebou, nebo s libovolným předchozím patrem, jinak vznikne cyklus.
+
+Takto postupujeme dokud nedostaneme $r-1$ pater. 
+
+Ten obsahuje $d(d-1)^{r-1}$ vrcholů a musí být tedy spojený s alespoň $(d-1)^{r-1}$ vrcholy.
+
+Počet vrcholů je pak $\sum_{i=0}^r-1 |L(i)| + (d-1)^{r-1}$.
+
+Ta se rovná 
+
+\begin{equation*}
+    1 + d + d(d-1) + d(d-1)^2 + ... + d(d-1)^{r-1} + (d-1)^{r-1}
+\end{equation*}
+
+Po upravách dostaneme tvar 
+\begin{equation*}
+    |V| \geq \frac{2(d-1)^r -2}{d-2}
+\end{equation*}
+
+
+Druhý případ řešíme úplně stejně, jenom dojdeme do případu kdy máme 
+
+\begin{equation*}
+    1 + d + d(d-1) + d(d-1)^2 + ... + d(d-1)^{r-1} 
+\end{equation*}
+
+vrcholů což upravíme na $|V|\geq \frac{d(d-1)^r -2}{d-2}$
+
 
 \subsection{4)}
 Připomeňme, že pro graf $G=(V,E)$ nazveme hranu $e\in E$ mostem, jestliže podgraf $(V,E\setminus\{e\})$ má více komponent souvislosti než $G$.\\
@@ -189,30 +226,22 @@ Analogicky nazveme vrchol $v\in V$ artikulací, jestliže indukovaný podgraf mn
 Dokažte, že každý $2k$- regulární graf neobsahuje most.
 \subsubsection*{Řešení}
 
-BÚNO mějme souvislý graf. 
+BÚNO mějme souvislý graf. (Pokud není můžeme se koukat pouze na jednu komponentu souvislosti)
 
-$k = 1$:
-\begin{lemma*}
-    Pro 2-regulární souvislý graf platí, že každý vrchol je součástí cyklu. 
-\end{lemma*}
-\begin{proof}
-    Mějme libovolně velký souvislý 2-regulární graf. 
-    Zvolme vrchol $v$ s jeho sousedy $w,u$, 
-    na tyto vrcholy klademe podmínku, že netvoří cyklus o délce 3. 
-    
-    Z tohoto grafu vyrobme menší graf tím, že odstraníme vrchol $v$ a přidáme hranu $\{w,u\}$, tím jsme dostali menší graf, touto operací určitě nezanikne žádný cyklus, zároveň pokud je uzel $w$ v cyklu v novém grafu tak byl uzel $v$  v cyklu v původním grafu. 
-    
-    Tuto operaci můžeme opakovat dokud nedostaneme graf s 3 vrcholy. Protože se jedná o 2 regulární graf tak se musí jednat o cyklus. 
-\end{proof}
+Ukážeme sporem.
 
-Z toho plyne, že každý $2$-regulární graf neobsahuje  most. 
+Předpokládejme tedy $2k$-regulární graf $G$, který obsahuje most $e$.
 
-$k>1$:
+Pokud bychom most odstranili dostaneme 2 komponenty souvislosti. Podívejme se na libovolnou z nich jako na indukovaný podgraf  $G$, označme $H=(V,E)$.
 
+Pak z handshaking lemma máme a z toho, že jednomu z vrcholů chybí jedna hrana plyne
+\begin{equation*}
+    2|E| = \sum_{v\in V} = 2k|V| - 1
+\end{equation*}
 
+Z toho ale máme, že $|E| = k|V| - \frac{1}{2}$. Počet hran ale nemůže být necelé číslo proto jsme našli spor. 
 
-
-
+\qed
 
 \subsection{4b)}
 \subsubsection*{Zadání}
@@ -220,37 +249,95 @@ Dokažte, že každý $k$-regulární bipartitní graf neobsahuje artikulaci.
 
 \subsubsection*{Řešení}
 
-Z 1a) víme, že  $|L|=|R|$. BÚNO mějme souvislý graf. 
+BÚNO mějme souvislý k-regulární bipartitní graf $G$. (Pokud není můžeme se koukat pouze na jednu komponentu souvislosti)
 
-Pro $k=1$ je tvrzení triviální, máme graf $G=([2], \{1,2\})$, odebráním vrcholu dostaneme $G=([1], \emptyset)$ což je stále jedna komponenta.
+Z 1a) víme, že  $|L|=|R|$.
 
-Uvažujme $k=2$: 
+Ukážeme sporem.
 
-Z lemmatu dokázaného pro 4b) víme, že každý vrchol v 2-regulárním grafu je součástí cyklu, 
-odstraněním jednoho vrcholu z cyklu určitě nedostaneme novou komponentu souvislosti.
+Předpokládejme, že $G$ má artikulaci $v$. Jejím odstraněním dostáváme několik komponentů souvislosti. 
+Podívejme se na libovolnou z nich jako na indukovaný podgraf  $G$, označme $H=(V,E)$.
 
-$k\geq 3$:
+$H$ je bipartitní (protože se jedná o podgraf bipartitního grafu). Označme $L$ a $R$ jednotlivé části rozkladu.
 
-Vezměme 
+BÚNO předpokládejme, že $v$ byla spojena s $L$ za pomoci $i$ hran. Z bipartitnosti víme, že byla spojena jen s jednou částí, navíc víme, že $i<k$.
 
 
+Podívejme se kolik hran vede z $R$. Z regularity máme $k|R|$ hran. 
+
+Pro $L$ dostáváme $k|L| - i$ hran.  
+
+
+Dostáváme tedy $k|R| = k|L| - i$. To upravme jako 
+\begin{equation*}
+    \frac{i}{k} = |L| - |R|
+\end{equation*}
+
+
+Pravá strana je zřejmě celé číslo. Ale protože $i<k$ tak levá strana celé číslo není, což je spor. 
+\qed
 
 
 \subsection{5a)}
 \subsubsection*{Zadání}
-Buď $G=(V,E)$ neprázdný graf a buď $d \coloneq \frac{|E|}{|V|}$. Dokažte, že $G$ obsahuje indukovaný podgraf $H$ splňující $\delta(H) > d$.
+Buď $G=(V,E)$ neprázdný graf a buď $d \coloneq \frac{|E|}{|V|}$. 
+Dokažte, že $G$ obsahuje indukovaný podgraf $H$ splňující $\delta(H) > d$.
 
 (Nápověda: zkuste z $G$ postupně odebírat vrcholy stupně nejvýše $d$.)
 
 \subsubsection*{Řešení}
 
+Postupujme podle nápovědy. Vezměme graf $G_i = (V_i, E_i)$ a 
+odeberme z něj vrchol stupně nejvýše $d_i \coloneq \frac{|E|}{|V|}$, tím vytvoříme graf $G_{i+1}$
+
+Platí, že $d_i \leq d_{i+1}$. Toto plyne z
+\begin{equation*}
+    \frac{|E_i|}{|V_i|} \leq \frac{|E_{i+1}|}{|V_{i+1}|} = \frac{E_{i} - \frac{|E_i|}{|V_i|}}{|V_i| - 1} 
+\end{equation*}
+
+Toto opakujeme, dokud se nedostaneme do situace, kdy v grafu není vrchol, který by měl stupeň menší než $d_i$.\\
+Tím dostáváme graf, kde máme alespoň $n$ vrcholů nejméně stupně $d_i$, což jsme chtěli ukázat. 
+
 
 \subsection{5b)}
 \subsubsection*{Zadání}
 Pro každé přirozené $d\geq 1$ a každé $\varepsilon\in(0,1)$ zkonstruujte graf $G_{d,\varepsilon}= (V,E)$
-takový, že splňuje $\frac{|E|}{|V|} > d - \varepsilon$ a zároveň $\delta(H)\leq d$ pro každý podgraf $H \subseteq G_{d,\varepsilon}$.
+takový, že splňuje $\frac{|E|}{|V|} > d - \varepsilon$ a 
+zároveň $\delta(H)\leq d$ pro každý podgraf $H \subseteq G_{d,\varepsilon}$.
 
 
 \subsubsection*{Řešení}
+
+% Vezměme $i$-regulární graf $G$ o $n$ vrcholech ($i<n$).
+% Z handshaking lemmatu pak dostaneme, že $2|E| = in$. Odeberme z něj $h$ hran a máme 
+
+% \begin{equation*}
+%     |E| = \frac{in}{2} - h
+% \end{equation*}
+
+% V dalším kroku konstrukce vezměme $n$ grafů $G$. Vytvořme nový nesouvislý graf $H$, 
+% kde každé $G$ je jedna z jeho komponent souvislosti.
+% Tento graf má zřejmě $|V| = 2n$ vrcholů.\\
+% Dále jednoduše dostáváme, že $G$ má 
+% \begin{equation*}
+%     |E| = n(\frac{ik}{2} - 1)
+% \end{equation*} 
+% hran. 
+
+
+% Z toho máme, 
+% \begin{equation*}
+%     \frac{|E|}{|V|} = \frac{i}{2} - \frac{h}{n}
+% \end{equation*}
+
+% $i$ zvolme tak, aby platilo $i = 2d$. 
+
+% $n$ můžeme zvolit libovolně velké a proto tedy existuje $n$ tak, že člen $\frac{h}{n} < \varepsilon$ pro libovolné $\varepsilon$.
+
+% Navíc, protože graf má sudý počet vrcholů tak víme, že existuje (plyne z první série úkolů).
+
+% Tímto jsme sestrojili graf, který splňuje $\frac{|E|}{|V|} > d - \varepsilon$. 
+
+% Protože je ale původní graf je $i$-regulární/$d$-regulární, tak i každý jeho indukovaný podgraf je nejvíce $d$-regulární.
 
 \end{document}
