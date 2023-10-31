@@ -1,0 +1,112 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}}
+
+\setcounter{secnumdepth}{0}
+\begin{document}
+
+\section{4. domácí úlohy}
+
+\subsection{1a)}
+\subsubsection*{Zadání}
+Buď $G=(V,E)$ graf s $n$ vrcholy a spektrem $\lambda_1 \geq \lambda_2 \geq \dots \geq \lambda_n$. 
+Dokažte, že\begin{equation*}
+    \sum_{i\in[n]} \lambda_i^2 = 2|E|
+\end{equation*}
+
+
+\subsubsection*{Řešení}
+
+Využijeme dvě věty z lineární algebry. 
+
+\begin{lemma*}
+    Nechť má matice $\mathbb{A}$ vlastní číslo $\lambda$, poté má matice $\mathbb{A}^2$ vlastní číslo $\lambda^2$
+\end{lemma*}
+\begin{proof}
+    Víme, že platí $\mathbb{A}x = \lambda x$. Pak jednoduše máme 
+    \begin{equation*}
+        \mathbb{A}^2x = \mathbb{A}(\mathbb{A}x) = \mathbb{A}(\lambda x) = \lambda \mathbb{A} x = \lambda^2 x
+    \end{equation*}
+\end{proof}
+
+\begin{lemma*}
+    Stopa matice $\mathbb{A}$ je rovna součtu vlastních čísel matice (včetně násobnosti).
+
+    \textit{Bez důkazu.}
+\end{lemma*}
+
+
+Graf má matici sousednosti $A_G$, její prvky značme $a_{ii}$. Pak za pomoci předchozích dvou vět platí 
+\begin{equation*}
+    \sum_{i\in[n]} \lambda_i^2 = tr(A_G^2)
+\end{equation*} 
+
+
+Označme prvky matice $A_G^2$ jako $b_{ii}$. Nyní stačí explicitně spočítat stopu. Máme
+\begin{equation*}
+    \sum_{i\in[n]} \lambda_i^2 = tr(A_G^2) = \sum_{i=1}^n b_{ii} = \sum_{i=1}^n \sum_{k=1}^n a_{ik}a_{ki} = \sum_{i=1}^n \sum_{k=1}^n a_{ik}
+\end{equation*} 
+
+V posledním kroku jsme využili vlastnosti, že matice $A_G$ je symetrická a navíc toho, že její hodnoty jsou buď 1 nebo 0. 
+Poslední člen je navíc zřejmě roven $2|E|$, protože počítáme počet jedniček v matici sousednosti, a každá hrana spojuje právě dva vrcholy.  
+
+Celkem tedy dostáváme hledané 
+\begin{equation*}
+    \sum_{i\in[n]} \lambda_i^2 = 2|E|
+\end{equation*}
+\qed 
+
+
+\subsection{1b)}
+\subsubsection*{Zadání}
+
+\subsubsection*{Řešení}
+
+
+
+
+
+
+\subsection{2)}
+\subsubsection*{Zadání}
+
+\subsubsection*{Řešení}
+
+
+
+
+\subsection{3)}
+\subsubsection*{Zadání}
+
+
+\subsubsection*{Řešení}
+
+
+
+
+\subsection{4a)}
+\subsubsection*{Zadání}
+
+
+\subsubsection*{Řešení}
+
+
+
+
+
+\subsection{4b)}
+\subsubsection*{Zadání}
+
+
+\subsubsection*{Řešení}
+
+
+
+\subsection{5)}
+\subsubsection*{Zadání}
+
+
+\subsubsection*{Řešení}
+
+
+
+\end{document}
