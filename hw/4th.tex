@@ -6,6 +6,8 @@
 
 \section{4. domácí úlohy}
 
+Na tomto úkolu jsem pracoval spolu s Janem Plecháčkem.
+
 \subsection{1a)}
 \subsubsection*{Zadání}
 Buď $G=(V,E)$ graf s $n$ vrcholy a spektrem $\lambda_1 \geq \lambda_2 \geq \dots \geq \lambda_n$. 
@@ -59,53 +61,107 @@ Celkem tedy dostáváme hledané
 \subsection{1b)}
 \subsubsection*{Zadání}
 
+Buď $G$ souvislý graf s maximálním stupněm $D$, a nechť spektrum $G$ má největší vlastní číslo $\lambda_1$. Dokažte, že $D=\lambda_1$ právě když $G$ je $D$-regulární.  
+
 \subsubsection*{Řešení}
 
+Dokažme $\impliedby$: 
 
+Plyne z tvrzení z přednášky $D = \delta \leq \lambda_1 \leq \Delta = D$. Z toho zřejmě $D = \lambda_1$.\\
+Dokažme $\implies$: 
 
+Platí $D=\lambda_1$, vezměme libovolný vlastní vektor (označme $x$) tohoto vlastního čísla. Označme $x_k$ v absolutní hodnotě jeho největší prvek.
+Vezměme vektor $y = \frac{1}{x_k}x$ (vlastní vektor $D$) a jeho největší hodnota je 1.
+
+Vezměme $k$-tý řádek matice $A_G$ a označme ho jako $a_k$
+
+Platí, že $A_G y = D y$ a také platí $a_K^T y = D y$. Z tohoto dostáváme následující sadu nerovností.
+\begin{equation*}
+    D = D \cdot y_k = a_k^T y = \sum_{i=1}^n a_{k,i}y_i \leq \sum_{i=1}^n a_{k,i} y_k = \sum_{i=1}^n a_{k,i} = deg(k) \leq D 
+\end{equation*}
+
+Proto u nerovnosti $\sum_{i=1}^n a_{k,i}y_i \leq \sum_{i=1}^n a_{k,i} y_k$ vždy nastává rovnost. Protože  $y_j \leq 1, \forall j\in[n]$ dostáváme $y_k = y_j = 1$.
+
+Pokud v nerovnosti použijeme místo $k$ řádek $j$ (kde $j$ je soused $k$ v grafu) dostaneme $deg(j) = D$. Opakováním procesu dospějeme k tomu, že $y_j = 1$ a $deg(j) = D$ protože graf je souvislý.
 
 
 
 \subsection{2)}
 \subsubsection*{Zadání}
+Buď $G=(V,E)$ graf s $n$ vrcholy a spektrem $\lambda_1 \geq \lambda_2 \geq \dots \geq \lambda_n$.
+Dokažte, že graf je bipartitní právě tehdy když $\lambda_i = - \lambda_{n-i+1}$ pro každé $i\in [n]$
 
 \subsubsection*{Řešení}
 
 
+Dokažme $\impliedby$: 
 
+Nechť $\lambda_1 \geq \lambda_2 \geq \dots \geq \lambda_n$ a platí $\lambda_i = - \lambda_{n-i+1}$. Ze symetrie $A_G$ víme, že je diagonalizovatelná, a pro $k$-tou mocninu pak platí, 
+$A_G^k = X D^k X^{-1}$. Vlastní čísla matice $A_G^k$ jsou tedy $\lambda_i^k$.
 
-\subsection{3)}
-\subsubsection*{Zadání}
+Z přednášky víme, že $(A^k_G)_{ij}$ je počet sledů délky $k$ z vrcholu $i$ do $j$. Chci ukázat, že graf nemá cyklus liché délky, tedy chci ukázat, že $(A^k_G)_{ii} = 0$ pro každé liché $k_3$.
 
+Protože máme $\lambda_i = - \lambda_{n-i+1}$, tak také platí $\lambda_i^k = (- \lambda_{n-i+1})^k$ a proto tedy $Tr(A_G^K) = \sum_{i=1}^n \lambda_i^k = 0$ pro každé liché $k$.
 
-\subsubsection*{Řešení}
+Protože, ale jsou všechny prvky matice nezáporné, tak platí, že $(A^k_G)_{ii} \geq 0$, protože je ale stopa matice rovna nule, tak musí platit $(A^k_G)_{ii} = 0$.
 
+Graf tedy neobsahuje cyklus liché délky a proto je bipartitní.\\
+Dokažme $\implies$: 
 
+Nechť $\lambda_1 \geq \lambda_2 \geq \dots \geq \lambda_n$ a $G$ bipartitní. Označme vrcholy v množině $L$ čísly od $1$ do $i$, v $R$ od $i+1$ do $n$.
+Matice sousednosti pak vypadá následovně.
+\begin{equation*}
+    A_G = \begin{pmatrix}
+        0 & B \\
+        B^T & 0 
+        \end{pmatrix} 
+\end{equation*} 
+ To plyne z toho, že vrcholy z $L$ a $R$ nejsou spojeny. 
+ 
+ Nechť $\vec{x}$ je libovolný vlastní vektor $A_G$ k nějakému vlastnímu číslu $\lambda$, označme prvních $i$ prvků jako $\vec{y}$ a zbylé prvky jako $\vec{z}$.Pak máme 
 
+ \begin{equation*}
+    A_G \vec{x} = \begin{pmatrix}
+        0 & B \\
+        B^T & 0 
+        \end{pmatrix} \begin{pmatrix}
+            \vec{y}  \\
+            \vec{z}  
+            \end{pmatrix} = \lambda\begin{pmatrix}
+                \vec{y}  \\
+                \vec{z}  
+                \end{pmatrix} = \lambda \vec{x}
+ \end{equation*}
 
-\subsection{4a)}
-\subsubsection*{Zadání}
+ Z prostřední rovnosti víme, že $B^T \vec{y} = \lambda \vec{z}$ a $B \vec{z} = \lambda \vec{y}$. Pak je ale i vektor $\vec{w}= \begin{pmatrix}
+    \vec{y}  \\
+     - \vec{z}  
+    \end{pmatrix}$ vlastním vektorem, protože
 
+    \begin{equation*}
+        A_G \vec{w} = \vec{x} = \begin{pmatrix}
+            0 & B \\
+            B^T & 0 
+            \end{pmatrix} \begin{pmatrix}
+                \vec{y}  \\
+                - \vec{z}  
+                \end{pmatrix} = \begin{pmatrix}
+                    -B \vec{z}  \\
+                    B^T \vec{y}  
+                    \end{pmatrix} = \begin{pmatrix}
+                        -\lambda \vec{y}  \\
+                        \lambda \vec{z}  
+                        \end{pmatrix} = - \lambda \begin{pmatrix}
+                             \vec{y}  \\
+                            - \vec{z}  
+                            \end{pmatrix} = -\lambda \vec{w}
+    \end{equation*}
+    Z toho dostáváme, že pokud je $\lambda$ vlastní číslo, tak pak je i $-\lambda$ vlastní číslo.
 
-\subsubsection*{Řešení}
+    Protože $A_G$ je symetrická tak víme, že je diagonalizovatelná. To znamená, že pro všechny vlastní čísla se rovná geometrická a algebraická násobnost. Z tohoto a předchozího pozorování pak plyne, že má-li vlastní číslo
+    $\lambda_k$ algebraickou násobnost $i$, tak i vlastní číslo $-\lambda_k$ bude mít násobnost $i$. To plyne z toho, že $\lambda_k$ má $i$ nezávislých vlastních vektorů, a  ty můžeme podle předchozího upravit na $i$ vlastních vektorů $-\lambda_k$.
 
-
-
-
-
-\subsection{4b)}
-\subsubsection*{Zadání}
-
-
-\subsubsection*{Řešení}
-
-
-
-\subsection{5)}
-\subsubsection*{Zadání}
-
-
-\subsubsection*{Řešení}
+    Když seřadíme vlastní velikosti, tak již dostaneme námi hledané tvrzení, tj.  $\lambda_i = - \lambda_{n-i+1}$ pro každé $i\in [n]$
 
 
 
