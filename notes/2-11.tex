@@ -1,0 +1,123 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}}
+\begin{document}
+
+
+\subsection{Operace zachovávající neseparovatelnost}
+
+Přidání hrany.
+
+Podrozdělení hrany, vezmi hranu a nahraď ji vrcholem a 2 hranami. Značíme $G:e$
+
+\begin{claim}
+    $G$ je souvislý $\Leftrightarrow G:e$ je souvislý, $\forall e \in E(G)$
+\end{claim}
+
+
+\begin{lemma}
+    $G$ neseparovatelný $\Leftrightarrow G:e$ neseparovatelný
+\end{lemma}
+
+
+\begin{corollary}
+    $G=(V,E)$ neseparovatelný graf, $e,f\in E$. Potom $\exists$ cyklus v $G$ obsahující $e$ i $f$.
+\end{corollary}
+
+\begin{definition}
+    $G=(V,E)$ relace na hranách E: $e ~_B f \Leftrightarrow e=f$, nebo $\exists$ cyklus v $G$ obsahující $e$ i $f$.
+\end{definition}
+
+\begin{definition}
+    Blok $G$ = třída ekvivalence $~_B$
+\end{definition}
+
+\begin{definition}
+    $G=(V,E)$ neseparovatelný graf, $u,w \in V, u\neq w$. Ucho délky l.
+    
+    \begin{enumerate}
+        \item $\{u,w\}\notin E$ přidej ${u,w}$ hranu a podrozděl $(l-1)$-krát
+        \item $\{u,w\}\in E$ podrozděl $(l-1)$-krát hranu a pak ji přidej 
+    \end{enumerate}
+\end{definition}
+
+\begin{theorem}[Ušaté lemma]
+    $G=(V,E)$ neseparovatelný graf $\exists$ posloupnost $G_0 \subseteq G_1 \subseteq ... \subseteq G_t = G$, kde $G_0$ je cyklus délky 2, 
+    a $G_{i+1}$ vzniklo přidáním ucha do $G_i$.
+\end{theorem}
+
+
+
+
+
+
+\section{K-souvislost}
+
+\begin{definition}
+    Graf $G=(V,E)$ je (vrcholově) k-souvislý jestliže $\forall u,w\in V$ platí, 
+    že existuje $k$ nezávislých disjunktních cest (až na konce) mezi nimi. 
+\end{definition}
+
+
+\begin{definition}
+    $\kappa(G) \coloneq \max_k k$ tak, že graf G je $k-$souvislý.
+\end{definition}
+
+
+\begin{definition}
+    Separátor v grafu který \textbf{není} úplný. 
+
+    $W\subseteq V$ tak, že $G[V\setminus W]$ je nesouvislý.
+\end{definition}
+
+
+\begin{remark}
+    k-souvislý $\implies |V| \geq k+1$
+\end{remark}
+
+\begin{remark}
+    k-souvislý graf G, $|W|\leq k-1, \forall W \subseteq V(G) \implies G-W$ je souvislý.
+\end{remark}
+
+\begin{theorem}[Menger (globální, vrcholový)]
+    G $k$-souvislý $\Leftrightarrow |V(G)|\geq k + 1 \wedge \forall W\subseteq V, |W|\leq k-1$ je $G-W$ souvislý.
+\end{theorem}
+
+
+
+% \begin{theorem}[Menger (lokální, vrcholový)]
+%     $\forall x,y \in V$ $P_G (x,y) \coloneq \max k, \exists P_1 ... P_k$ vrcholově disjunktních cest.
+% \end{theorem}
+
+
+
+\begin{definition}
+    Multigraf $G=(V,E_M), x,y\in V$ \begin{equation*}
+        P'_G(x,y) \coloneq \max_k: \exists P_1... P_k \text{hranově disjunktních cest mezi nimi}
+    \end{equation*}
+\end{definition}
+
+\begin{definition}
+    Hranová k-souvislost pro multigraf $\Leftrightarrow P'_G (x,y) \geq k, \forall x,y \in V$
+\end{definition}
+
+\begin{definition}
+    $\kappa'(G) \coloneq \max_k k$ tak, že graf G je hranově $k-$souvislý.
+\end{definition}
+
+
+Existuje Mengerova věta i tady. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
