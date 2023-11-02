@@ -1,0 +1,66 @@
+\documentclass[../main.tex]{subfiles}
+\graphicspath{{\subfix{../images/}}}
+\begin{document}
+
+
+\subsection{Hamiltonovské kružnice}
+\begin{definition}
+    $G=(V,E)$ graf, s $|V|=n$. Řekneme, že $G$ je Hamiltonovský, jestliže obsahuje kružnici s $n$ vrcholy jako podgraf.
+\end{definition}
+
+To je ekvivalentní s
+\begin{theorem}
+    $\exists \pi \in S_n$ (permutace V) tak, že $V=\{v_0,...,v_{n-1}\}$ a $\{v_i, v_{i+1 mod n}\} \in E, \forall i \in [n]$
+\end{theorem}
+
+
+
+\begin{theorem}[Dirac]
+    $G=(V,E), |V|=n\geq 3$ a minimální stupeň je $geq \frac{n}{2} \implies G$ má Hamiltonovskou kružnici
+\end{theorem}
+\begin{proof}
+    Důsledek následující věty
+\end{proof}
+
+\begin{theorem}[ORE]
+    $G= (V,E)$ graf s $|V|\geq 3$ tak, že $\forall u,v\in V$ které $\{u,v\}\notin E$ platí $deg(u) + deg(v) \geq |V|$ pak $G$ má HC.    
+\end{theorem}
+
+% \begin{proof}
+%     Ukážeme indukcí pro libovolné $n=|V|$ indukcí dle počtu hran v doplňku. $f\coloneq \binom{n}{2} - |E|$ 
+    
+%     Base case je úplný graf. 
+    
+%     Indukční krok:\\
+%     $G$ má $f$ nehran, BÚNO $x,y\in V$ tak, že $e_i\coloneq \{x,y\} \notin E$.
+
+
+
+
+% \end{proof}
+
+
+\begin{claim}
+    $G=(V,E), \exists X \subseteq V s.t. G-X$ má $>|X|$ komponent souvislosti $\implies G$ nemá HC. 
+\end{claim}
+
+\subsection{Robustní souvislost}
+
+\begin{definition}
+    $G=(V,E), |V|\geq 3$ graf je neseparovatelný, jestliže je souvislý a $\forall v \in V, G-v$ je souvislý 
+\end{definition}
+
+To znamená, že nemá artikulaci. 
+
+
+\begin{lemma}
+    Buď $G=(V,E)$ souvislý graf s $|V|\geq 3$. Jestliže $G$ obsahuje most $\implies \exists v \in V: G-v$ je nesouvislý. 
+\end{lemma}
+
+\begin{theorem}
+    $G$ neseparovatelný $\Leftrightarrow \forall u,v \in V \exists$ cesty $p_1,p_2$ v $G$ každá z $u$ do $w$ a $V(p_1)\cap V(p_2) = \{u,w\}$
+\end{theorem}
+
+
+
+\end{document}
